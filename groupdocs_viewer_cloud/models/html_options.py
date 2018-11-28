@@ -50,7 +50,8 @@ class HtmlOptions(RenderOptions):
         'embed_resources': 'bool',
         'enable_minification': 'bool',
         'enable_responsive_rendering': 'bool',
-        'exclude_fonts': 'bool'
+        'exclude_fonts': 'bool',
+        'exclude_fonts_list': 'list[str]'
     }
 
     attribute_map = {
@@ -59,10 +60,11 @@ class HtmlOptions(RenderOptions):
         'embed_resources': 'embedResources',
         'enable_minification': 'enableMinification',
         'enable_responsive_rendering': 'enableResponsiveRendering',
-        'exclude_fonts': 'excludeFonts'
+        'exclude_fonts': 'excludeFonts',
+        'exclude_fonts_list': 'excludeFontsList'
     }
 
-    def __init__(self, resource_path=None, ignore_resource_path_in_resources=None, embed_resources=None, enable_minification=None, enable_responsive_rendering=None, exclude_fonts=None, **kwargs):  # noqa: E501
+    def __init__(self, resource_path=None, ignore_resource_path_in_resources=None, embed_resources=None, enable_minification=None, enable_responsive_rendering=None, exclude_fonts=None, exclude_fonts_list=None, **kwargs):  # noqa: E501
         """Initializes new instance of HtmlOptions"""  # noqa: E501
 
         self.__resource_path = None
@@ -71,6 +73,7 @@ class HtmlOptions(RenderOptions):
         self._enable_minification = None
         self._enable_responsive_rendering = None
         self._exclude_fonts = None
+        self._exclude_fonts_list = None
 
         if resource_path is not None:
             self.resource_path = resource_path
@@ -84,6 +87,8 @@ class HtmlOptions(RenderOptions):
             self.enable_responsive_rendering = enable_responsive_rendering
         if exclude_fonts is not None:
             self.exclude_fonts = exclude_fonts
+        if exclude_fonts_list is not None:
+            self.exclude_fonts_list = exclude_fonts_list
 
         base = super(HtmlOptions, self)
         base.__init__(**kwargs)
@@ -234,6 +239,30 @@ class HtmlOptions(RenderOptions):
         :type: bool
         """
         self._exclude_fonts = exclude_fonts
+    
+    @property
+    def exclude_fonts_list(self):
+        """
+        Gets the exclude_fonts_list.  # noqa: E501
+
+        The list of font names, that will be excluded from HTML.  # noqa: E501
+
+        :return: The exclude_fonts_list.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._exclude_fonts_list
+
+    @exclude_fonts_list.setter
+    def exclude_fonts_list(self, exclude_fonts_list):
+        """
+        Sets the exclude_fonts_list.
+
+        The list of font names, that will be excluded from HTML.  # noqa: E501
+
+        :param exclude_fonts_list: The exclude_fonts_list.  # noqa: E501
+        :type: list[str]
+        """
+        self._exclude_fonts_list = exclude_fonts_list
 
     def to_dict(self):
         """Returns the model properties as a dict"""

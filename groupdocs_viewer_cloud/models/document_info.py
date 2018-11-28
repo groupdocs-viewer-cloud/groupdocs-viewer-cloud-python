@@ -50,7 +50,9 @@ class DocumentInfo(object):
         'date_modified': 'datetime',
         'pages': 'list[PageInfo]',
         'attachments': 'list[AttachmentInfo]',
-        'layers': 'list[str]'
+        'layers': 'list[str]',
+        'start_date': 'datetime',
+        'end_date': 'datetime'
     }
 
     attribute_map = {
@@ -61,10 +63,12 @@ class DocumentInfo(object):
         'date_modified': 'dateModified',
         'pages': 'pages',
         'attachments': 'attachments',
-        'layers': 'layers'
+        'layers': 'layers',
+        'start_date': 'startDate',
+        'end_date': 'endDate'
     }
 
-    def __init__(self, file_name=None, extension=None, file_format=None, size=None, date_modified=None, pages=None, attachments=None, layers=None, **kwargs):  # noqa: E501
+    def __init__(self, file_name=None, extension=None, file_format=None, size=None, date_modified=None, pages=None, attachments=None, layers=None, start_date=None, end_date=None, **kwargs):  # noqa: E501
         """Initializes new instance of DocumentInfo"""  # noqa: E501
 
         self._file_name = None
@@ -75,6 +79,8 @@ class DocumentInfo(object):
         self._pages = None
         self._attachments = None
         self._layers = None
+        self._start_date = None
+        self._end_date = None
 
         if file_name is not None:
             self.file_name = file_name
@@ -92,6 +98,10 @@ class DocumentInfo(object):
             self.attachments = attachments
         if layers is not None:
             self.layers = layers
+        if start_date is not None:
+            self.start_date = start_date
+        if end_date is not None:
+            self.end_date = end_date
     
     @property
     def file_name(self):
@@ -284,6 +294,54 @@ class DocumentInfo(object):
         :type: list[str]
         """
         self._layers = layers
+    
+    @property
+    def start_date(self):
+        """
+        Gets the start_date.  # noqa: E501
+
+        For MS Project documents, The date time from which the project started.  # noqa: E501
+
+        :return: The start_date.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._start_date
+
+    @start_date.setter
+    def start_date(self, start_date):
+        """
+        Sets the start_date.
+
+        For MS Project documents, The date time from which the project started.  # noqa: E501
+
+        :param start_date: The start_date.  # noqa: E501
+        :type: datetime
+        """
+        self._start_date = start_date
+    
+    @property
+    def end_date(self):
+        """
+        Gets the end_date.  # noqa: E501
+
+        For MS Project documents, the date time when the project is to be completed.  # noqa: E501
+
+        :return: The end_date.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._end_date
+
+    @end_date.setter
+    def end_date(self, end_date):
+        """
+        Sets the end_date.
+
+        For MS Project documents, the date time when the project is to be completed.  # noqa: E501
+
+        :param end_date: The end_date.  # noqa: E501
+        :type: datetime
+        """
+        self._end_date = end_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""

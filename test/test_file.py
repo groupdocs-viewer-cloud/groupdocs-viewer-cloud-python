@@ -114,3 +114,58 @@ class TestFile:
         f.folder = "pdf\\pdf"
 
         return f
+
+    @classmethod
+    def project_mpp(cls):
+        f = TestFile()
+        f.file_name = "sample.mpp"
+        f.folder = "project\\mpp"
+
+        return f
+
+    @classmethod
+    def outlook_pst(cls):
+        f = TestFile()
+        f.file_name = "sample.pst"
+        f.folder = "email\\outlook"
+
+        return f
+
+    @classmethod
+    def image_cgm(cls):
+        f = TestFile()
+        f.file_name = "nasa.cgm"
+        f.folder = "image"
+
+        return f
+
+    @classmethod
+    def print_pcl(cls):
+        f = TestFile()
+        f.file_name = "print.pcl"
+        f.folder = "print"
+
+        return f
+
+    @classmethod
+    def print_ps(cls):
+        f = TestFile()
+        f.file_name = "sample.ps"
+        f.folder = "print"
+
+        return f
+
+    @classmethod
+    def supported(cls):        
+        return [
+            cls.with_attachment_msg(),
+            cls.uses_custom_font_pptx(),
+            cls.one_page_docx(),
+            cls.with_attachment_pdf(),
+            cls.two_hidden_pages_vsd(),
+            cls.project_mpp(),
+            cls.outlook_pst(),
+            cls.image_cgm(),
+            cls.print_pcl(),
+            cls.print_ps()
+        ]

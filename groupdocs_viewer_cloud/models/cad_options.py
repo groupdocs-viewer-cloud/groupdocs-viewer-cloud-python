@@ -32,7 +32,7 @@ import six
 
 class CadOptions(object):
     """
-    The CAD documents rendering options.
+    The CAD documents rendering options. Rendering of CAD file formats is not supported at the moment.
     """
 
     """

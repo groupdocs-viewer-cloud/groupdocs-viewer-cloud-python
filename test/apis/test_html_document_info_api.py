@@ -29,6 +29,7 @@ from __future__ import absolute_import
 
 import unittest
 import json
+import datetime
 
 from test.test_context import TestContext
 from test.test_file import TestFile
@@ -236,6 +237,34 @@ class TestHtmlDocumentInfoApi(TestContext):
         self.assertEqual(1, len(response.pages))
         self.assertEqual(".pptx", response.extension)
         self.assertEqual("with-notes.pptx", response.file_name)
+
+    def test_html_get_document_info_with_project_options(self):
+        """
+        Test case for html_get_document_info_with_project_options
+
+        """
+        file = TestFile.project_mpp()
+
+        project_options = ProjectOptions()
+        project_options.page_size = "Unknown"
+        project_options.time_unit = "Months"
+        project_options.start_date = datetime.datetime(2008, 7, 1, 0, 0)
+        project_options.end_date = datetime.datetime(2008, 7, 31, 0, 0)
+
+        document_info_options = DocumentInfoOptions()
+        document_info_options.project_options = project_options
+
+        request = HtmlGetDocumentInfoWithOptionsRequest(file.file_name)
+        request.file_name = file.file_name
+        request.folder = file.folder
+        request.document_info_options = document_info_options
+
+        response = self.viewer_api.html_get_document_info_with_options(request)
+
+        self.assertEqual(2, len(response.pages))
+        self.assertEqual(file.file_name, response.file_name)
+        self.assertEqual(datetime.datetime(2008, 6, 1, 0, 0), response.start_date)
+        self.assertEqual(datetime.datetime(2008, 9, 3, 0, 0), response.end_date)
 
 if __name__ == '__main__':
     unittest.main()

@@ -28,6 +28,7 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 from groupdocs_viewer_cloud.models import *
 from groupdocs_viewer_cloud.models.requests import *
@@ -238,5 +239,54 @@ class TestHtmlDocumentPagesApi(TestContext):
 
         self.assertIsNone(response)
     
+    def test_html_create_pages_cache_project_options(self):
+        """
+        Test case for html_create_pages_cache with project options
+
+        """
+        file = TestFile.project_mpp()
+
+        project_options = ProjectOptions()
+        project_options.time_unit = "Days"
+        project_options.start_date = datetime.datetime(2008, 7, 1, 0, 0)
+        project_options.end_date = datetime.datetime(2008, 7, 31, 0, 0)
+
+        html_options = HtmlOptions()
+        html_options.embed_resources = True
+        html_options.project_options = project_options
+
+        request = HtmlCreatePagesCacheRequest(file.file_name)
+        request.html_options = html_options
+        request.folder = file.folder
+
+        response = self.viewer_api.html_create_pages_cache(request)
+
+        self.assertEqual(1, len(response.pages))
+        self.assertEqual(file.file_name, response.file_name)
+        self.assertEqual(file.folder, response.folder)
+
+    def test_html_create_pages_cache_outlook_options(self):
+        """
+        Test case for html_create_pages_cache with outlook options
+
+        """
+        file = TestFile.outlook_pst()
+        outlook_options = OutlookOptions()
+        outlook_options.max_items_in_folder = 5
+
+        html_options = HtmlOptions()
+        html_options.embed_resources = True
+        html_options.outlook_options = outlook_options
+
+        request = HtmlCreatePagesCacheRequest(file.file_name)
+        request.html_options = html_options
+        request.folder = file.folder
+
+        response = self.viewer_api.html_create_pages_cache(request)
+
+        self.assertGreater(len(response.pages), 0)
+        self.assertEqual(file.file_name, response.file_name)
+        self.assertEqual(file.folder, response.folder)
+
 if __name__ == '__main__':
     unittest.main()

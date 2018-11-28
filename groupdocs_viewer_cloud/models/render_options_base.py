@@ -57,7 +57,8 @@ class RenderOptionsBase(object):
         'words_options': 'WordsOptions',
         'pdf_options': 'PdfOptions',
         'slides_options': 'SlidesOptions',
-        'project_options': 'ProjectOptions'
+        'project_options': 'ProjectOptions',
+        'outlook_options': 'OutlookOptions'
     }
 
     attribute_map = {
@@ -75,10 +76,11 @@ class RenderOptionsBase(object):
         'words_options': 'wordsOptions',
         'pdf_options': 'pdfOptions',
         'slides_options': 'slidesOptions',
-        'project_options': 'projectOptions'
+        'project_options': 'projectOptions',
+        'outlook_options': 'outlookOptions'
     }
 
-    def __init__(self, password=None, attachment_password=None, extract_text=None, render_comments=None, render_hidden_pages=None, transforms=None, default_font_name=None, watermark=None, cells_options=None, cad_options=None, email_options=None, words_options=None, pdf_options=None, slides_options=None, project_options=None, **kwargs):  # noqa: E501
+    def __init__(self, password=None, attachment_password=None, extract_text=None, render_comments=None, render_hidden_pages=None, transforms=None, default_font_name=None, watermark=None, cells_options=None, cad_options=None, email_options=None, words_options=None, pdf_options=None, slides_options=None, project_options=None, outlook_options=None, **kwargs):  # noqa: E501
         """Initializes new instance of RenderOptionsBase"""  # noqa: E501
 
         self._password = None
@@ -96,6 +98,7 @@ class RenderOptionsBase(object):
         self._pdf_options = None
         self._slides_options = None
         self._project_options = None
+        self._outlook_options = None
 
         if password is not None:
             self.password = password
@@ -127,6 +130,8 @@ class RenderOptionsBase(object):
             self.slides_options = slides_options
         if project_options is not None:
             self.project_options = project_options
+        if outlook_options is not None:
+            self.outlook_options = outlook_options
     
     @property
     def password(self):
@@ -487,6 +492,30 @@ class RenderOptionsBase(object):
         :type: ProjectOptions
         """
         self._project_options = project_options
+    
+    @property
+    def outlook_options(self):
+        """
+        Gets the outlook_options.  # noqa: E501
+
+        The Outlook Data File document (PST/OST) rendering options.  # noqa: E501
+
+        :return: The outlook_options.  # noqa: E501
+        :rtype: OutlookOptions
+        """
+        return self._outlook_options
+
+    @outlook_options.setter
+    def outlook_options(self, outlook_options):
+        """
+        Sets the outlook_options.
+
+        The Outlook Data File document (PST/OST) rendering options.  # noqa: E501
+
+        :param outlook_options: The outlook_options.  # noqa: E501
+        :type: OutlookOptions
+        """
+        self._outlook_options = outlook_options
 
     def to_dict(self):
         """Returns the model properties as a dict"""

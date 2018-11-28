@@ -254,5 +254,23 @@ class TestImageDocumentPagesApi(TestContext):
 
         self.assertIsNone(response)
     
+    def test_image_create_pages_cache_for_supported_formats(self):
+        """
+        Test case for image_create_pages_cache for file formats
+        """
+        for file in TestFile.supported():
+            image_options = ImageOptions()
+            image_options.format = "jpg"
+
+            request = ImageCreatePagesCacheRequest(file.file_name)
+            request.image_options = image_options
+            request.folder = file.folder
+
+            response = self.viewer_api.image_create_pages_cache(request)
+
+            self.assertGreater(len(response.pages), 0)
+            self.assertEqual(file.file_name, response.file_name)
+            self.assertEqual(file.folder, response.folder)
+
 if __name__ == '__main__':
     unittest.main()

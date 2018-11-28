@@ -44,24 +44,34 @@ class ProjectOptions(object):
     """
     swagger_types = {
         'page_size': 'str',
-        'time_unit': 'str'
+        'time_unit': 'str',
+        'start_date': 'datetime',
+        'end_date': 'datetime'
     }
 
     attribute_map = {
         'page_size': 'pageSize',
-        'time_unit': 'timeUnit'
+        'time_unit': 'timeUnit',
+        'start_date': 'startDate',
+        'end_date': 'endDate'
     }
 
-    def __init__(self, page_size=None, time_unit=None, **kwargs):  # noqa: E501
+    def __init__(self, page_size=None, time_unit=None, start_date=None, end_date=None, **kwargs):  # noqa: E501
         """Initializes new instance of ProjectOptions"""  # noqa: E501
 
         self._page_size = None
         self._time_unit = None
+        self._start_date = None
+        self._end_date = None
 
         if page_size is not None:
             self.page_size = page_size
         if time_unit is not None:
             self.time_unit = time_unit
+        if start_date is not None:
+            self.start_date = start_date
+        if end_date is not None:
+            self.end_date = end_date
     
     @property
     def page_size(self):
@@ -110,6 +120,54 @@ class ProjectOptions(object):
         :type: str
         """
         self._time_unit = time_unit
+    
+    @property
+    def start_date(self):
+        """
+        Gets the start_date.  # noqa: E501
+
+        The start date of a Gantt Chart View to render.          # noqa: E501
+
+        :return: The start_date.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._start_date
+
+    @start_date.setter
+    def start_date(self, start_date):
+        """
+        Sets the start_date.
+
+        The start date of a Gantt Chart View to render.          # noqa: E501
+
+        :param start_date: The start_date.  # noqa: E501
+        :type: datetime
+        """
+        self._start_date = start_date
+    
+    @property
+    def end_date(self):
+        """
+        Gets the end_date.  # noqa: E501
+
+        The end date of a Gantt Chart View to render.  # noqa: E501
+
+        :return: The end_date.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._end_date
+
+    @end_date.setter
+    def end_date(self, end_date):
+        """
+        Sets the end_date.
+
+        The end date of a Gantt Chart View to render.  # noqa: E501
+
+        :param end_date: The end_date.  # noqa: E501
+        :type: datetime
+        """
+        self._end_date = end_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""
