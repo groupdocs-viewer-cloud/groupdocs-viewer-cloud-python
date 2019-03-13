@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="AttachmentInfo.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,7 +32,7 @@ import six
 
 class AttachmentInfo(object):
     """
-    Describes attachment information
+    Attachment information
     """
 
     """
@@ -43,37 +43,27 @@ class AttachmentInfo(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'name': 'str',
-        'extension': 'str',
-        'file_format': 'str'
+        'name': 'str'
     }
 
     attribute_map = {
-        'name': 'name',
-        'extension': 'extension',
-        'file_format': 'fileFormat'
+        'name': 'Name'
     }
 
-    def __init__(self, name=None, extension=None, file_format=None, **kwargs):  # noqa: E501
+    def __init__(self, name=None, **kwargs):  # noqa: E501
         """Initializes new instance of AttachmentInfo"""  # noqa: E501
 
         self._name = None
-        self._extension = None
-        self._file_format = None
 
         if name is not None:
             self.name = name
-        if extension is not None:
-            self.extension = extension
-        if file_format is not None:
-            self.file_format = file_format
     
     @property
     def name(self):
         """
         Gets the name.  # noqa: E501
 
-        Attachment name.  # noqa: E501
+        Attachment name  # noqa: E501
 
         :return: The name.  # noqa: E501
         :rtype: str
@@ -85,60 +75,12 @@ class AttachmentInfo(object):
         """
         Sets the name.
 
-        Attachment name.  # noqa: E501
+        Attachment name  # noqa: E501
 
         :param name: The name.  # noqa: E501
         :type: str
         """
         self._name = name
-    
-    @property
-    def extension(self):
-        """
-        Gets the extension.  # noqa: E501
-
-        Attachment extension.  # noqa: E501
-
-        :return: The extension.  # noqa: E501
-        :rtype: str
-        """
-        return self._extension
-
-    @extension.setter
-    def extension(self, extension):
-        """
-        Sets the extension.
-
-        Attachment extension.  # noqa: E501
-
-        :param extension: The extension.  # noqa: E501
-        :type: str
-        """
-        self._extension = extension
-    
-    @property
-    def file_format(self):
-        """
-        Gets the file_format.  # noqa: E501
-
-        File format.  # noqa: E501
-
-        :return: The file_format.  # noqa: E501
-        :rtype: str
-        """
-        return self._file_format
-
-    @file_format.setter
-    def file_format(self, file_format):
-        """
-        Sets the file_format.
-
-        File format.  # noqa: E501
-
-        :param file_format: The file_format.  # noqa: E501
-        :type: str
-        """
-        self._file_format = file_format
 
     def to_dict(self):
         """Returns the model properties as a dict"""

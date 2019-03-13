@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="test_auth_api.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,7 +45,7 @@ class TestAuthApi(unittest.TestCase):
     def init_viewer_api(self, app_sid, app_key):
         configuration = Configuration(app_sid, app_key)
         configuration.api_base_url = TestSettings.API_BASE_URL
-
+        
         return ViewerApi.from_config(configuration)
 
     def test_auth_error_when_app_sid_not_found(self):
@@ -59,7 +59,7 @@ class TestAuthApi(unittest.TestCase):
         with self.assertRaises(ApiException) as context:
             viewer_api.get_supported_file_formats()
 
-        self.assertEqual("Client 'test' is not registered in the system.", context.exception.message)
+        self.assertEqual("invalid_client", context.exception.message)
     
     def test_auth_error_when_app_key_not_found(self):
         """Test case to check handling of authentication errors"""
@@ -72,7 +72,7 @@ class TestAuthApi(unittest.TestCase):
         with self.assertRaises(ApiException) as context:
             viewer_api.get_supported_file_formats()
 
-        self.assertEqual("Client secret is invalid.", context.exception.message)
+        self.assertEqual("invalid_client", context.exception.message)
 
 if __name__ == '__main__':
     unittest.main()

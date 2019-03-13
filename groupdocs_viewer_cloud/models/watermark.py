@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="Watermark.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,7 +32,7 @@ import six
 
 class Watermark(object):
     """
-    Provides options to configure watermark appearance. 
+    Text watermark
     """
 
     """
@@ -50,10 +50,10 @@ class Watermark(object):
     }
 
     attribute_map = {
-        'text': 'text',
-        'color': 'color',
-        'position': 'position',
-        'size': 'size'
+        'text': 'Text',
+        'color': 'Color',
+        'position': 'Position',
+        'size': 'Size'
     }
 
     def __init__(self, text=None, color=None, position=None, size=None, **kwargs):  # noqa: E501
@@ -78,7 +78,7 @@ class Watermark(object):
         """
         Gets the text.  # noqa: E501
 
-        The watermark text.  # noqa: E501
+        Watermark text.  # noqa: E501
 
         :return: The text.  # noqa: E501
         :rtype: str
@@ -90,7 +90,7 @@ class Watermark(object):
         """
         Sets the text.
 
-        The watermark text.  # noqa: E501
+        Watermark text.  # noqa: E501
 
         :param text: The text.  # noqa: E501
         :type: str
@@ -102,7 +102,7 @@ class Watermark(object):
         """
         Gets the color.  # noqa: E501
 
-        The watermark color. Supported formats {Magenta|(112,222,11)|(50,112,222,11)}. Default value is \"Red\".  # noqa: E501
+        Watermark color. Supported formats {Magenta|(112,222,11)|(50,112,222,11)}. Default value is \"Red\".  # noqa: E501
 
         :return: The color.  # noqa: E501
         :rtype: str
@@ -114,7 +114,7 @@ class Watermark(object):
         """
         Sets the color.
 
-        The watermark color. Supported formats {Magenta|(112,222,11)|(50,112,222,11)}. Default value is \"Red\".  # noqa: E501
+        Watermark color. Supported formats {Magenta|(112,222,11)|(50,112,222,11)}. Default value is \"Red\".  # noqa: E501
 
         :param color: The color.  # noqa: E501
         :type: str
@@ -126,7 +126,7 @@ class Watermark(object):
         """
         Gets the position.  # noqa: E501
 
-        The watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \"Diagonal\".  # noqa: E501
+        Watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \"Diagonal\".  # noqa: E501
 
         :return: The position.  # noqa: E501
         :rtype: str
@@ -138,7 +138,7 @@ class Watermark(object):
         """
         Sets the position.
 
-        The watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \"Diagonal\".  # noqa: E501
+        Watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \"Diagonal\".  # noqa: E501
 
         :param position: The position.  # noqa: E501
         :type: str
@@ -167,6 +167,8 @@ class Watermark(object):
         :param size: The size.  # noqa: E501
         :type: int
         """
+        if size is None:
+            raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
         self._size = size
 
     def to_dict(self):

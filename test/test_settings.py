@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="test_context.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,4 +29,4 @@ class TestSettings:
 # Get your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).
     APP_SID="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
     APP_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    API_BASE_URL="http://api.groupdocs.cloud"
+    API_BASE_URL="https://api.groupdocs.cloud"

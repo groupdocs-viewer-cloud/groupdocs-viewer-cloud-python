@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="Resource.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_viewer_cloud.models import ResourceUrl
-
-class Resource(ResourceUrl):
+class Resource(object):
     """
-    Describes resource.
+    Reference to resource
     """
 
     """
@@ -45,50 +43,73 @@ class Resource(ResourceUrl):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'name': 'str'
+        'path': 'str',
+        'download_url': 'str'
     }
 
     attribute_map = {
-        'name': 'name'
+        'path': 'Path',
+        'download_url': 'DownloadUrl'
     }
 
-    def __init__(self, name=None, **kwargs):  # noqa: E501
+    def __init__(self, path=None, download_url=None, **kwargs):  # noqa: E501
         """Initializes new instance of Resource"""  # noqa: E501
 
-        self._name = None
+        self._path = None
+        self._download_url = None
 
-        if name is not None:
-            self.name = name
-
-        base = super(Resource, self)
-        base.__init__(**kwargs)
-
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        if path is not None:
+            self.path = path
+        if download_url is not None:
+            self.download_url = download_url
     
     @property
-    def name(self):
+    def path(self):
         """
-        Gets the name.  # noqa: E501
+        Gets the path.  # noqa: E501
 
-        HTML resource (image, style, graphics or font) file name.  # noqa: E501
+        Path of resource file in storage  # noqa: E501
 
-        :return: The name.  # noqa: E501
+        :return: The path.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._path
 
-    @name.setter
-    def name(self, name):
+    @path.setter
+    def path(self, path):
         """
-        Sets the name.
+        Sets the path.
 
-        HTML resource (image, style, graphics or font) file name.  # noqa: E501
+        Path of resource file in storage  # noqa: E501
 
-        :param name: The name.  # noqa: E501
+        :param path: The path.  # noqa: E501
         :type: str
         """
-        self._name = name
+        self._path = path
+    
+    @property
+    def download_url(self):
+        """
+        Gets the download_url.  # noqa: E501
+
+        ULR to retrieve resource.  # noqa: E501
+
+        :return: The download_url.  # noqa: E501
+        :rtype: str
+        """
+        return self._download_url
+
+    @download_url.setter
+    def download_url(self, download_url):
+        """
+        Sets the download_url.
+
+        ULR to retrieve resource.  # noqa: E501
+
+        :param download_url: The download_url.  # noqa: E501
+        :type: str
+        """
+        self._download_url = download_url
 
     def to_dict(self):
         """Returns the model properties as a dict"""

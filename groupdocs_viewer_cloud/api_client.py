@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="api_client.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -74,12 +74,12 @@ class ApiClient(object):
         self.configuration = configuration
         self.pool = None
         self.rest_client = rest.RESTClientObject(configuration)
-        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '18.11.0'}
+        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '19.3.0'}
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'python sdk 18.11.0'
+        self.user_agent = 'python sdk 19.3.0'
 
     def __del__(self):
         if self.pool is not None:
@@ -618,12 +618,14 @@ class ApiClient(object):
         if klass.swagger_types is not None:
             empty_instance = klass()
             for attr, attr_type in six.iteritems(empty_instance.swagger_types):
-                if (data is not None and
-                        empty_instance.attribute_map[attr] in data and
-                        isinstance(data, (list, dict))):
-                    value = data[empty_instance.attribute_map[attr]]
+                pname = self.__uncap(empty_instance.attribute_map[attr])                
+                if (data is not None and pname in data and isinstance(data, (list, dict))):
+                    value = data[pname]
                     kwargs[attr] = self.__deserialize(value, attr_type)
 
         instance = klass(**kwargs)
 
         return instance
+        
+    def __uncap(self, s):
+        return s[:1].lower() + s[1:]

@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="ImageOptions.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,7 +34,7 @@ from groupdocs_viewer_cloud.models import RenderOptions
 
 class ImageOptions(RenderOptions):
     """
-    Provides options for rendering document as image.
+    Options for rendering document into image
     """
 
     """
@@ -45,89 +45,41 @@ class ImageOptions(RenderOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'format': 'str',
-        'quality': 'int',
         'width': 'int',
-        'height': 'int'
+        'height': 'int',
+        'extract_text': 'bool',
+        'jpeg_quality': 'int'
     }
 
     attribute_map = {
-        'format': 'format',
-        'quality': 'quality',
-        'width': 'width',
-        'height': 'height'
+        'width': 'Width',
+        'height': 'Height',
+        'extract_text': 'ExtractText',
+        'jpeg_quality': 'JpegQuality'
     }
 
-    def __init__(self, format=None, quality=None, width=None, height=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, extract_text=None, jpeg_quality=None, **kwargs):  # noqa: E501
         """Initializes new instance of ImageOptions"""  # noqa: E501
 
-        self._format = None
-        self._quality = None
         self._width = None
         self._height = None
+        self._extract_text = None
+        self._jpeg_quality = None
 
-        if format is not None:
-            self.format = format
-        if quality is not None:
-            self.quality = quality
         if width is not None:
             self.width = width
         if height is not None:
             self.height = height
+        if extract_text is not None:
+            self.extract_text = extract_text
+        if jpeg_quality is not None:
+            self.jpeg_quality = jpeg_quality
 
         base = super(ImageOptions, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
-    
-    @property
-    def format(self):
-        """
-        Gets the format.  # noqa: E501
-
-        Allows to set image format (png, jpg, bmp). Default value is png.  # noqa: E501
-
-        :return: The format.  # noqa: E501
-        :rtype: str
-        """
-        return self._format
-
-    @format.setter
-    def format(self, format):
-        """
-        Sets the format.
-
-        Allows to set image format (png, jpg, bmp). Default value is png.  # noqa: E501
-
-        :param format: The format.  # noqa: E501
-        :type: str
-        """
-        self._format = format
-    
-    @property
-    def quality(self):
-        """
-        Gets the quality.  # noqa: E501
-
-        Allows to specify quality when rendering as JPG. Valid values are between 1 and 100.  Default value is 90.  # noqa: E501
-
-        :return: The quality.  # noqa: E501
-        :rtype: int
-        """
-        return self._quality
-
-    @quality.setter
-    def quality(self, quality):
-        """
-        Sets the quality.
-
-        Allows to specify quality when rendering as JPG. Valid values are between 1 and 100.  Default value is 90.  # noqa: E501
-
-        :param quality: The quality.  # noqa: E501
-        :type: int
-        """
-        self._quality = quality
     
     @property
     def width(self):
@@ -151,6 +103,8 @@ class ImageOptions(RenderOptions):
         :param width: The width.  # noqa: E501
         :type: int
         """
+        if width is None:
+            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
         self._width = width
     
     @property
@@ -175,7 +129,61 @@ class ImageOptions(RenderOptions):
         :param height: The height.  # noqa: E501
         :type: int
         """
+        if height is None:
+            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
         self._height = height
+    
+    @property
+    def extract_text(self):
+        """
+        Gets the extract_text.  # noqa: E501
+
+        When enabled Viewer will extract text when it's possible (e.g. raster formats don't have text layer) and return it in the viewing result. This option might be useful when you want to add selectable text layer over the image.   # noqa: E501
+
+        :return: The extract_text.  # noqa: E501
+        :rtype: bool
+        """
+        return self._extract_text
+
+    @extract_text.setter
+    def extract_text(self, extract_text):
+        """
+        Sets the extract_text.
+
+        When enabled Viewer will extract text when it's possible (e.g. raster formats don't have text layer) and return it in the viewing result. This option might be useful when you want to add selectable text layer over the image.   # noqa: E501
+
+        :param extract_text: The extract_text.  # noqa: E501
+        :type: bool
+        """
+        if extract_text is None:
+            raise ValueError("Invalid value for `extract_text`, must not be `None`")  # noqa: E501
+        self._extract_text = extract_text
+    
+    @property
+    def jpeg_quality(self):
+        """
+        Gets the jpeg_quality.  # noqa: E501
+
+        Allows to specify quality when rendering as JPG. Valid values are between 1 and 100.  Default value is 90.  # noqa: E501
+
+        :return: The jpeg_quality.  # noqa: E501
+        :rtype: int
+        """
+        return self._jpeg_quality
+
+    @jpeg_quality.setter
+    def jpeg_quality(self, jpeg_quality):
+        """
+        Sets the jpeg_quality.
+
+        Allows to specify quality when rendering as JPG. Valid values are between 1 and 100.  Default value is 90.  # noqa: E501
+
+        :param jpeg_quality: The jpeg_quality.  # noqa: E501
+        :type: int
+        """
+        if jpeg_quality is None:
+            raise ValueError("Invalid value for `jpeg_quality`, must not be `None`")  # noqa: E501
+        self._jpeg_quality = jpeg_quality
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -1,7 +1,7 @@
 # coding: utf-8
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="auth.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,8 +43,6 @@ class Auth(object):
         self.configuration = configuration
         self.api_client = api_client
         self._access_token = None
-        self._refresh_token = None
-        self._access_token_expires_at = None
 
     def get_auth_settings(self):
         access_token = self._get_access_token()        
@@ -61,17 +59,11 @@ class Auth(object):
     def _get_access_token(self):
         if self._access_token is None:
             self._request_access_token()
-        elif self._is_access_token_expired():
-            self._refresh_access_token()
            
         return self._access_token
 
-    def _is_access_token_expired(self):
-        current_time = datetime.datetime.now()
-        return current_time > self._access_token_expires_at
-
     def _request_access_token(self):
-        request_url = "/oauth2/token"
+        request_url = "/connect/token"
         header_params = {
             'Accept': 'application/json', 
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -92,36 +84,7 @@ class Auth(object):
             _append_api_version = False
         )
 
-        self._update_tokens(data)
-    
-    # Helper method to refresh access token
-    def _refresh_access_token(self):
-        request_url = "/oauth2/token"
-        header_params = {
-            'Accept': 'application/json', 
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-        form_params = [
-            ('grant_type', 'refresh_token'), 
-            ('refresh_token', self._refresh_token)
-        ]
-
-        data = self.api_client.call_api(
-            resource_path = request_url, 
-            method = 'POST',
-            header_params = header_params,
-            post_params = form_params,
-            response_type = 'object',
-            _return_http_data_only = True,
-            _append_api_version = False
-        )
-
-        self._update_tokens(data)
+        self._update_tokens(data)    
 
     def _update_tokens(self, data):
         self._access_token = data['access_token'] if six.PY3 else data['access_token'].encode('utf8')
-        self._refresh_token = data['refresh_token'] if six.PY3 else data['refresh_token'].encode('utf8')
-
-        expires_in_seconds = int(data['expires_in']) - 5 * 60 
-        current_time = datetime.datetime.now()
-        self._access_token_expires_at = current_time + datetime.timedelta(seconds=expires_in_seconds)

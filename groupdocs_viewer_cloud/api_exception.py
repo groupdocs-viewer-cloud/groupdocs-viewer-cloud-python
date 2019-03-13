@@ -1,7 +1,7 @@
 # coding: utf-8
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="api_exception.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,15 +41,12 @@ class ApiException(Exception):
                 data = json.loads(http_resp.data)
                 
                 error = data.get("error")
-                message = data.get("message")
-                error_description = data.get("error_description")
+                error_api = data.get("Error")
                 
-                if message is not None:
-                    self.message = message
-                elif error_description is not None:
-                    self.message = error_description
-                elif error != None:
-                    self.message = error.get("message") if error.get("message") is not None else http_resp.data
+                if error is not None:
+                    self.message = error
+                elif error_api is not None:
+                    self.message = error_api.get("Message") if error_api.get("Message") is not None else http_resp.data
                 else:
                     self.message = http_resp.data   
             except ValueError:

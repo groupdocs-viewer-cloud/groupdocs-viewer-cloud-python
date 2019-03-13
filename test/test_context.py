@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="test_context.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,32 +34,31 @@ import tempfile
 import unittest
 import warnings
 import threading
-
-from test.test_settings import TestSettings
-
-import asposestoragecloud
 import six
 
-from groupdocs_viewer_cloud import Configuration, ViewerApi
+from groupdocs_viewer_cloud import Configuration, ViewerApi, StorageApi, FileApi, FolderApi
+from groupdocs_viewer_cloud import ObjectExistsRequest, UploadFileRequest, DeleteFolderRequest
+from test.test_settings import TestSettings
+from test.test_file import TestFile
 
 class TestContext(unittest.TestCase):
 
     viewer_api = None
-    _storage_api = None
+    storage_api = None
+    file_api = None
+    folder_api = None
     _test_files_uploaded = False
 
     def setUp(self):
         if six.PY3:
             warnings.simplefilter("ignore", ResourceWarning)
 
-        self._init_viewer_api()
+        self._init_api()
         self._upload_test_files()
 
     def tearDown(self):
-        self._remove_folder_in_storage("cache")
-        self._remove_folder_in_storage("tests")
-        self._close_viewer_api_thread_pool()
-        self._close_storage_api_thread_pool()
+        self._remove_folder_in_storage("viewer")
+        self._close_api_thread_pool()
 
     def get_test_file_path(self, file):
         test_files = "test\\test_files"
@@ -82,50 +81,39 @@ class TestContext(unittest.TestCase):
 
         return temp_file.name
 
-    def _close_viewer_api_thread_pool(self):
+    def _close_api_thread_pool(self):
         self.viewer_api.close()
-
-    def _close_storage_api_thread_pool(self):
-        thread_pool = self._storage_api.api_client.pool
-        if thread_pool is not None:
-            thread_pool.close()
-            thread_pool.join()
+        self.storage_api.close()
+        self.file_api.close()
+        self.folder_api.close()
 
     def _remove_folder_in_storage(self, folder):
-        self._init_storage_api()
-        self._storage_api.delete_folder(folder, recursive = True)
+        request = DeleteFolderRequest(folder, None, True)
+        self.folder_api.delete_folder(request)
+        return
 
     def _upload_test_files(self):
         if TestContext._test_files_uploaded:
             return
 
-        self._init_storage_api()
-        test_files = "test\\test_files"
-
-        for path, _, files in os.walk(test_files):
-            for file_name in files:
-                local_file_path = os.path.join(path, file_name)                
-                remote_file_path = local_file_path.replace(test_files + "\\", "")
-                file_contents = open(local_file_path, "rb") 
-                self._storage_api.put_create(remote_file_path, file_contents)
+        for test_file in TestFile.get_test_files():
+            local_file_path = self.get_test_file_path(test_file)
+            remote_file_path = test_file.folder + test_file.file_name            
+            exist_request = ObjectExistsRequest(remote_file_path)
+            response = self.storage_api.object_exists(exist_request)
+            if not response.exists:
+                print('Upload file: ' + remote_file_path)
+                request = UploadFileRequest(remote_file_path, local_file_path)
+                self.file_api.upload_file(request)
 
         TestContext._test_files_uploaded = True
 
-    def _init_viewer_api(self):
+    def _init_api(self):
         if self.viewer_api is None:
             configuration = Configuration(TestSettings.APP_SID, TestSettings.APP_KEY)
             configuration.api_base_url = TestSettings.API_BASE_URL
+            #configuration.debug = True
             self.viewer_api = ViewerApi.from_config(configuration)
-
-    def _init_storage_api(self):
-        if self._storage_api is not None:
-            return self._storage_api
-
-        configuration = asposestoragecloud.Configuration()
-        configuration.host = TestSettings.API_BASE_URL
-        configuration.base_url = TestSettings.API_BASE_URL + "/v1"
-
-        api_client = asposestoragecloud.ApiClient(
-            TestSettings.APP_KEY, TestSettings.APP_SID, TestSettings.API_BASE_URL, configuration)
-        
-        self._storage_api = asposestoragecloud.StorageApi(api_client)
+            self.storage_api = StorageApi.from_config(configuration)
+            self.file_api = FileApi.from_config(configuration)
+            self.folder_api = FolderApi.from_config(configuration)

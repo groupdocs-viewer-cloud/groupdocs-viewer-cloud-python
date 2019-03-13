@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="test_file.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,145 +27,100 @@
 
 from __future__ import absolute_import
 
+from groupdocs_viewer_cloud import FileInfo
+
 class TestFile:
     """Test file"""
-
-    @classmethod
-    def with_attachment_msg(cls):
-        f = TestFile()
-        f.file_name = "with-attachment.msg"
-        f.folder = "email\\msg"
-        f.attachment_name = "password-protected.docx"
-        f.attachment_password = "password"
-        
-        return f
-
-    @classmethod
-    def from_url_one_page_docx(cls):
-            f = TestFile()
-            f.file_name = "one-page.docx"
-            f.url = "https://www.dropbox.com/s/j260ve4f90h1p41/one-page.docx?dl=1"
-
-            return f
-
-    @classmethod
-    def from_url_with_notes_pptx(cls):
-        f = TestFile()
-        f.file_name = "with-notes.pptx"
-        f.url = "https://www.dropbox.com/s/r2eioe2atushqcf/with-notes.pptx?dl=1"
-            
-        return f
-
-    @classmethod
-    def uses_custom_font_pptx(cls):
-        f = TestFile()
-        f.file_name = "uses-custom-font.pptx"
-        f.folder = "slides\\pptx"
-
-        return f
 
     @classmethod
     def one_page_docx(cls):
         f = TestFile()
         f.file_name = "one-page.docx"
-        f.folder = "words\\docx"
-
+        f.folder = "words\\docx\\"
         return f
 
     @classmethod
-    def four_pages_docx(cls):
+    def not_exist(cls):
         f = TestFile()
-        f.file_name = "four-pages.docx"
-        f.folder = "words\\docx"
-
+        f.file_name = "not-exist.docx"
+        f.folder = "somefolder\\"
         return f
 
     @classmethod
     def password_protected_docx(cls):
         f = TestFile()
         f.file_name = "password-protected.docx"
-        f.folder = "words\\docx"
+        f.folder = "words\\docx\\"
         f.password = "password"
-
-        return f
-
-    @classmethod
-    def with_attachment_pdf(cls):
-        f = TestFile()
-        f.file_name = "with-attachment.pdf"
-        f.folder = "pdf\\pdf"
-        f.attachment_name = "password-protected.docx"
-        f.attachment_password = "password"
-
         return f
 
     @classmethod
     def two_hidden_pages_vsd(cls):
         f = TestFile()
         f.file_name = "two-hidden-pages.vsd"
-        f.folder = "diagram\\vsd"
-
+        f.folder = "diagram\\vsd\\"
         return f
 
     @classmethod
-    def corrupted_pdf(cls):
+    def with_hidden_rows_and_columns(cls):
         f = TestFile()
-        f.file_name = "corrupted.pdf"
-        f.folder = "pdf\\pdf"
+        f.file_name = "with-hidden-rows-and-columns.xlsx"
+        f.folder = "cells\\xlsx\\"
+        return f
 
+    @classmethod
+    def three_layouts_dwf(cls):
+        f = TestFile()
+        f.file_name = "three-layouts.dwf"
+        f.folder = "cad\\dwf\\"
         return f
 
     @classmethod
     def project_mpp(cls):
         f = TestFile()
         f.file_name = "sample.mpp"
-        f.folder = "project\\mpp"
-
+        f.folder = "project\\mpp\\"
         return f
 
     @classmethod
-    def outlook_pst(cls):
+    def uses_custom_font_pptx(cls):
         f = TestFile()
-        f.file_name = "sample.pst"
-        f.folder = "email\\outlook"
-
+        f.file_name = "uses-custom-font.pptx"
+        f.folder = "slides\\pptx\\"
         return f
 
     @classmethod
-    def image_cgm(cls):
+    def font_ttf(cls):
         f = TestFile()
-        f.file_name = "nasa.cgm"
-        f.folder = "image"
-
+        f.file_name = "foo.ttf"
+        f.folder = "font\\ttf\\"
         return f
 
     @classmethod
-    def print_pcl(cls):
+    def four_pages_docx(cls):
         f = TestFile()
-        f.file_name = "print.pcl"
-        f.folder = "print"
-
+        f.file_name = "four-pages.docx"
+        f.folder = "words\\docx\\"
         return f
 
-    @classmethod
-    def print_ps(cls):
-        f = TestFile()
-        f.file_name = "sample.ps"
-        f.folder = "print"
-
-        return f
 
     @classmethod
-    def supported(cls):        
+    def get_test_files(cls):
         return [
-            cls.with_attachment_msg(),
-            cls.uses_custom_font_pptx(),
             cls.one_page_docx(),
-            cls.with_attachment_pdf(),
+            cls.password_protected_docx(),
             cls.two_hidden_pages_vsd(),
+            cls.with_hidden_rows_and_columns(),
+            cls.three_layouts_dwf(),
             cls.project_mpp(),
-            cls.outlook_pst(),
-            cls.image_cgm(),
-            cls.print_pcl(),
-            cls.print_ps()
+            cls.uses_custom_font_pptx(),
+            cls.font_ttf(),
+            cls.four_pages_docx()            
         ]
+
+    def ToFileInfo(self):
+        f = FileInfo()
+        f.file_path = self.folder + self.file_name
+        if hasattr(self, 'password'):
+            f.password = self.password
+        return f

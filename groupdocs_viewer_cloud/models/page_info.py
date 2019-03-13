@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="PageInfo.py">
-#   Copyright (c) 2003-2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,7 +32,7 @@ import six
 
 class PageInfo(object):
     """
-    Page information.
+    Page information
     """
 
     """
@@ -44,47 +44,32 @@ class PageInfo(object):
     """
     swagger_types = {
         'number': 'int',
-        'name': 'str',
         'width': 'int',
         'height': 'int',
-        'angle': 'int',
-        'visible': 'bool',
-        'rows': 'list[RowInfo]'
+        'rows': 'list[Row]'
     }
 
     attribute_map = {
-        'number': 'number',
-        'name': 'name',
-        'width': 'width',
-        'height': 'height',
-        'angle': 'angle',
-        'visible': 'visible',
-        'rows': 'rows'
+        'number': 'Number',
+        'width': 'Width',
+        'height': 'Height',
+        'rows': 'Rows'
     }
 
-    def __init__(self, number=None, name=None, width=None, height=None, angle=None, visible=None, rows=None, **kwargs):  # noqa: E501
+    def __init__(self, number=None, width=None, height=None, rows=None, **kwargs):  # noqa: E501
         """Initializes new instance of PageInfo"""  # noqa: E501
 
         self._number = None
-        self._name = None
         self._width = None
         self._height = None
-        self._angle = None
-        self._visible = None
         self._rows = None
 
         if number is not None:
             self.number = number
-        if name is not None:
-            self.name = name
         if width is not None:
             self.width = width
         if height is not None:
             self.height = height
-        if angle is not None:
-            self.angle = angle
-        if visible is not None:
-            self.visible = visible
         if rows is not None:
             self.rows = rows
     
@@ -93,7 +78,7 @@ class PageInfo(object):
         """
         Gets the number.  # noqa: E501
 
-        Page number.  # noqa: E501
+        Page number  # noqa: E501
 
         :return: The number.  # noqa: E501
         :rtype: int
@@ -105,43 +90,21 @@ class PageInfo(object):
         """
         Sets the number.
 
-        Page number.  # noqa: E501
+        Page number  # noqa: E501
 
         :param number: The number.  # noqa: E501
         :type: int
         """
+        if number is None:
+            raise ValueError("Invalid value for `number`, must not be `None`")  # noqa: E501
         self._number = number
-    
-    @property
-    def name(self):
-        """
-        Gets the name.  # noqa: E501
-
-        Page name.  # noqa: E501
-
-        :return: The name.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """
-        Sets the name.
-
-        Page name.  # noqa: E501
-
-        :param name: The name.  # noqa: E501
-        :type: str
-        """
-        self._name = name
     
     @property
     def width(self):
         """
         Gets the width.  # noqa: E501
 
-        Page width.  # noqa: E501
+        Image Page width  # noqa: E501
 
         :return: The width.  # noqa: E501
         :rtype: int
@@ -153,11 +116,13 @@ class PageInfo(object):
         """
         Sets the width.
 
-        Page width.  # noqa: E501
+        Image Page width  # noqa: E501
 
         :param width: The width.  # noqa: E501
         :type: int
         """
+        if width is None:
+            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
         self._width = width
     
     @property
@@ -165,7 +130,7 @@ class PageInfo(object):
         """
         Gets the height.  # noqa: E501
 
-        Page height.  # noqa: E501
+        Image Page height  # noqa: E501
 
         :return: The height.  # noqa: E501
         :rtype: int
@@ -177,70 +142,24 @@ class PageInfo(object):
         """
         Sets the height.
 
-        Page height.  # noqa: E501
+        Image Page height  # noqa: E501
 
         :param height: The height.  # noqa: E501
         :type: int
         """
+        if height is None:
+            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
         self._height = height
-    
-    @property
-    def angle(self):
-        """
-        Gets the angle.  # noqa: E501
-
-        Page angle.  # noqa: E501
-
-        :return: The angle.  # noqa: E501
-        :rtype: int
-        """
-        return self._angle
-
-    @angle.setter
-    def angle(self, angle):
-        """
-        Sets the angle.
-
-        Page angle.  # noqa: E501
-
-        :param angle: The angle.  # noqa: E501
-        :type: int
-        """
-        self._angle = angle
-    
-    @property
-    def visible(self):
-        """
-        Gets the visible.  # noqa: E501
-
-        Page visibility.  # noqa: E501
-
-        :return: The visible.  # noqa: E501
-        :rtype: bool
-        """
-        return self._visible
-
-    @visible.setter
-    def visible(self, visible):
-        """
-        Sets the visible.
-
-        Page visibility.  # noqa: E501
-
-        :param visible: The visible.  # noqa: E501
-        :type: bool
-        """
-        self._visible = visible
     
     @property
     def rows(self):
         """
         Gets the rows.  # noqa: E501
 
-        Page rows.  # noqa: E501
+        Image Page rows  # noqa: E501
 
         :return: The rows.  # noqa: E501
-        :rtype: list[RowInfo]
+        :rtype: list[Row]
         """
         return self._rows
 
@@ -249,10 +168,10 @@ class PageInfo(object):
         """
         Sets the rows.
 
-        Page rows.  # noqa: E501
+        Image Page rows  # noqa: E501
 
         :param rows: The rows.  # noqa: E501
-        :type: list[RowInfo]
+        :type: list[Row]
         """
         self._rows = rows
 
