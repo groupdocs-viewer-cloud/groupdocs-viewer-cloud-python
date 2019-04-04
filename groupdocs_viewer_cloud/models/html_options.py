@@ -46,24 +46,29 @@ class HtmlOptions(RenderOptions):
     """
     swagger_types = {
         'external_resources': 'bool',
-        'resource_path': 'str'
+        'resource_path': 'str',
+        'is_responsive': 'bool'
     }
 
     attribute_map = {
         'external_resources': 'ExternalResources',
-        'resource_path': 'ResourcePath'
+        'resource_path': 'ResourcePath',
+        'is_responsive': 'IsResponsive'
     }
 
-    def __init__(self, external_resources=None, resource_path=None, **kwargs):  # noqa: E501
+    def __init__(self, external_resources=None, resource_path=None, is_responsive=None, **kwargs):  # noqa: E501
         """Initializes new instance of HtmlOptions"""  # noqa: E501
 
         self._external_resources = None
         self.__resource_path = None
+        self._is_responsive = None
 
         if external_resources is not None:
             self.external_resources = external_resources
         if resource_path is not None:
             self.resource_path = resource_path
+        if is_responsive is not None:
+            self.is_responsive = is_responsive
 
         base = super(HtmlOptions, self)
         base.__init__(**kwargs)
@@ -120,6 +125,32 @@ class HtmlOptions(RenderOptions):
         :type: str
         """
         self.__resource_path = resource_path
+    
+    @property
+    def is_responsive(self):
+        """
+        Gets the is_responsive.  # noqa: E501
+
+        Indicates whether rendering will provide responsive web pages, that look well on different device types. Default value is false.  # noqa: E501
+
+        :return: The is_responsive.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_responsive
+
+    @is_responsive.setter
+    def is_responsive(self, is_responsive):
+        """
+        Sets the is_responsive.
+
+        Indicates whether rendering will provide responsive web pages, that look well on different device types. Default value is false.  # noqa: E501
+
+        :param is_responsive: The is_responsive.  # noqa: E501
+        :type: bool
+        """
+        if is_responsive is None:
+            raise ValueError("Invalid value for `is_responsive`, must not be `None`")  # noqa: E501
+        self._is_responsive = is_responsive
 
     def to_dict(self):
         """Returns the model properties as a dict"""
