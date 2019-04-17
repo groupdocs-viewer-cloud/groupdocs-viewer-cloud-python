@@ -45,6 +45,7 @@ class ViewOptions(object):
     swagger_types = {
         'file_info': 'FileInfo',
         'view_format': 'str',
+        'output_path': 'str',
         'fonts_path': 'str',
         'watermark': 'Watermark',
         'render_options': 'RenderOptions'
@@ -53,16 +54,18 @@ class ViewOptions(object):
     attribute_map = {
         'file_info': 'FileInfo',
         'view_format': 'ViewFormat',
+        'output_path': 'OutputPath',
         'fonts_path': 'FontsPath',
         'watermark': 'Watermark',
         'render_options': 'RenderOptions'
     }
 
-    def __init__(self, file_info=None, view_format=None, fonts_path=None, watermark=None, render_options=None, **kwargs):  # noqa: E501
+    def __init__(self, file_info=None, view_format=None, output_path=None, fonts_path=None, watermark=None, render_options=None, **kwargs):  # noqa: E501
         """Initializes new instance of ViewOptions"""  # noqa: E501
 
         self._file_info = None
         self._view_format = None
+        self._output_path = None
         self._fonts_path = None
         self._watermark = None
         self._render_options = None
@@ -71,6 +74,8 @@ class ViewOptions(object):
             self.file_info = file_info
         if view_format is not None:
             self.view_format = view_format
+        if output_path is not None:
+            self.output_path = output_path
         if fonts_path is not None:
             self.fonts_path = fonts_path
         if watermark is not None:
@@ -135,6 +140,30 @@ class ViewOptions(object):
             self._view_format = view_format
         else:
             self._view_format = allowed_values[int(view_format) if six.PY3 else long(view_format)]
+    
+    @property
+    def output_path(self):
+        """
+        Gets the output_path.  # noqa: E501
+
+        The output path. Default value is 'viewer\\{input file path}_{file extension}\\'  # noqa: E501
+
+        :return: The output_path.  # noqa: E501
+        :rtype: str
+        """
+        return self._output_path
+
+    @output_path.setter
+    def output_path(self, output_path):
+        """
+        Sets the output_path.
+
+        The output path. Default value is 'viewer\\{input file path}_{file extension}\\'  # noqa: E501
+
+        :param output_path: The output_path.  # noqa: E501
+        :type: str
+        """
+        self._output_path = output_path
     
     @property
     def fonts_path(self):

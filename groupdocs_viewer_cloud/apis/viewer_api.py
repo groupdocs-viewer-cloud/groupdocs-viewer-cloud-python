@@ -84,7 +84,7 @@ class ViewerApi(object):
         return ViewerApi(configuration)
 
     def create_view(self, request,**kwargs):  # noqa: E501
-        """Create new view if it not exists  # noqa: E501
+        """Render document pages  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -104,7 +104,7 @@ class ViewerApi(object):
         return data
 
     def _create_view_with_http_info(self, request, **kwargs):  # noqa: E501
-        """Create new view if it not exists  # noqa: E501
+        """Render document pages  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -175,7 +175,7 @@ class ViewerApi(object):
         return self.api_client.call_api(**call_kwargs)  # noqa: E501
 
     def delete_view(self, request,**kwargs):  # noqa: E501
-        """Delete view  # noqa: E501
+        """Delete rendered pages  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -195,7 +195,7 @@ class ViewerApi(object):
         
 
     def _delete_view_with_http_info(self, request, **kwargs):  # noqa: E501
-        """Delete view  # noqa: E501
+        """Delete rendered pages  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -266,7 +266,7 @@ class ViewerApi(object):
         return self.api_client.call_api(**call_kwargs)  # noqa: E501
 
     def get_info(self, request,**kwargs):  # noqa: E501
-        """Get information about view  # noqa: E501
+        """Retrieve information about document pages  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -286,7 +286,7 @@ class ViewerApi(object):
         return data
 
     def _get_info_with_http_info(self, request, **kwargs):  # noqa: E501
-        """Get information about view  # noqa: E501
+        """Retrieve information about document pages  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -357,7 +357,7 @@ class ViewerApi(object):
         return self.api_client.call_api(**call_kwargs)  # noqa: E501
 
     def get_supported_file_formats(self, **kwargs):  # noqa: E501
-        """Get supported file formats  # noqa: E501
+        """List supported file formats  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -376,7 +376,7 @@ class ViewerApi(object):
         return data
 
     def _get_supported_file_formats_with_http_info(self, **kwargs):  # noqa: E501
-        """Get supported file formats  # noqa: E501
+        """List supported file formats  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
