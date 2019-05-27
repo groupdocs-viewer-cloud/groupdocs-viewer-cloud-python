@@ -32,7 +32,7 @@ import warnings
 
 import six
 
-from groupdocs_viewer_cloud import ViewerApi, Configuration, ApiException
+from groupdocs_viewer_cloud import InfoApi, Configuration, ApiException
 from test.test_settings import TestSettings
 
 class TestAuthApi(unittest.TestCase):
@@ -42,11 +42,11 @@ class TestAuthApi(unittest.TestCase):
         if six.PY3:
             warnings.simplefilter("ignore", ResourceWarning)
 
-    def init_viewer_api(self, app_sid, app_key):
+    def init_info_api(self, app_sid, app_key):
         configuration = Configuration(app_sid, app_key)
         configuration.api_base_url = TestSettings.API_BASE_URL
         
-        return ViewerApi.from_config(configuration)
+        return InfoApi.from_config(configuration)
 
     def test_auth_error_when_app_sid_not_found(self):
         """Test case to check handling of authentication errors"""
@@ -54,10 +54,10 @@ class TestAuthApi(unittest.TestCase):
         app_sid = "test"
         app_key = "test"
         
-        viewer_api = self.init_viewer_api(app_sid, app_key)
+        info_api = self.init_info_api(app_sid, app_key)
 
         with self.assertRaises(ApiException) as context:
-            viewer_api.get_supported_file_formats()
+            info_api.get_supported_file_formats()
 
         self.assertEqual("invalid_client", context.exception.message)
     
@@ -67,10 +67,10 @@ class TestAuthApi(unittest.TestCase):
         app_sid = TestSettings.APP_SID
         app_key = "test"
         
-        viewer_api = self.init_viewer_api(app_sid, app_key)
+        info_api = self.init_info_api(app_sid, app_key)
 
         with self.assertRaises(ApiException) as context:
-            viewer_api.get_supported_file_formats()
+            info_api.get_supported_file_formats()
 
         self.assertEqual("invalid_client", context.exception.message)
 

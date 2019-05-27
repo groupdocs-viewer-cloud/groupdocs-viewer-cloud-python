@@ -36,14 +36,15 @@ import warnings
 import threading
 import six
 
-from groupdocs_viewer_cloud import Configuration, ViewerApi, StorageApi, FileApi, FolderApi
+from groupdocs_viewer_cloud import Configuration, InfoApi, ViewApi, StorageApi, FileApi, FolderApi
 from groupdocs_viewer_cloud import ObjectExistsRequest, UploadFileRequest, DeleteFolderRequest
 from test.test_settings import TestSettings
 from test.test_file import TestFile
 
 class TestContext(unittest.TestCase):
 
-    viewer_api = None
+    info_api = None
+    view_api = None
     storage_api = None
     file_api = None
     folder_api = None
@@ -82,7 +83,8 @@ class TestContext(unittest.TestCase):
         return temp_file.name
 
     def _close_api_thread_pool(self):
-        self.viewer_api.close()
+        self.info_api.close()
+        self.view_api.close()
         self.storage_api.close()
         self.file_api.close()
         self.folder_api.close()
@@ -109,11 +111,12 @@ class TestContext(unittest.TestCase):
         TestContext._test_files_uploaded = True
 
     def _init_api(self):
-        if self.viewer_api is None:
+        if self.view_api is None:
             configuration = Configuration(TestSettings.APP_SID, TestSettings.APP_KEY)
             configuration.api_base_url = TestSettings.API_BASE_URL
             #configuration.debug = True
-            self.viewer_api = ViewerApi.from_config(configuration)
+            self.info_api = InfoApi.from_config(configuration)
+            self.view_api = ViewApi.from_config(configuration)
             self.storage_api = StorageApi.from_config(configuration)
             self.file_api = FileApi.from_config(configuration)
             self.folder_api = FolderApi.from_config(configuration)

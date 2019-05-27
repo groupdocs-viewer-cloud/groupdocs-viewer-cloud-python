@@ -40,7 +40,7 @@ class TestViewerFormatsApi(TestContext):
 
         Retrieves list of supported file formats.
         """
-        data = self.viewer_api.get_supported_file_formats()
+        data = self.info_api.get_supported_file_formats()
 
         for format in data.formats:
             self.assertFalse(format.file_format == "")

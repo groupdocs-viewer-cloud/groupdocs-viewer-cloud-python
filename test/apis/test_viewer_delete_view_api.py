@@ -41,13 +41,13 @@ class TestViewerDeleteViewApi(TestContext):
         view_options = ViewOptions()
         view_options.file_info = TestFile.one_page_docx().ToFileInfo()
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(1, len(data.pages))
         # Delete view
         view_options = DeleteViewOptions()
         view_options.file_info = TestFile.one_page_docx().ToFileInfo()
         request = DeleteViewRequest(view_options)
-        self.viewer_api.delete_view(request)
+        self.view_api.delete_view(request)
 
 if __name__ == '__main__':
     unittest.main()

@@ -8,13 +8,15 @@ from __future__ import absolute_import
 from groupdocs_viewer_cloud.apis.file_api import FileApi
 from groupdocs_viewer_cloud.apis.folder_api import FolderApi
 from groupdocs_viewer_cloud.apis.storage_api import StorageApi
-from groupdocs_viewer_cloud.apis.viewer_api import ViewerApi
+from groupdocs_viewer_cloud.apis.info_api import InfoApi
+from groupdocs_viewer_cloud.apis.view_api import ViewApi
 
 # import requests
 from groupdocs_viewer_cloud.apis.file_api import CopyFileRequest, DeleteFileRequest, DownloadFileRequest, MoveFileRequest, UploadFileRequest
 from groupdocs_viewer_cloud.apis.storage_api import GetDiscUsageRequest, GetFileVersionsRequest, ObjectExistsRequest, StorageExistsRequest
 from groupdocs_viewer_cloud.apis.folder_api import CopyFolderRequest, CreateFolderRequest, DeleteFolderRequest, GetFilesListRequest, MoveFolderRequest
-from groupdocs_viewer_cloud.apis.viewer_api import CreateViewRequest, DeleteViewRequest, GetInfoRequest
+from groupdocs_viewer_cloud.apis.info_api import GetInfoRequest
+from groupdocs_viewer_cloud.apis.view_api import CreateViewRequest, DeleteViewRequest
 
 # import related types
 from groupdocs_viewer_cloud.auth import Auth

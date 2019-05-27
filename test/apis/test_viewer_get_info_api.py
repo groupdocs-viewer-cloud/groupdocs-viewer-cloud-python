@@ -40,7 +40,7 @@ class TestViewerGetInfoApi(TestContext):
         view_options = ViewOptions()
         request = GetInfoRequest(view_options)
         with self.assertRaises(ApiException) as context:
-            self.viewer_api.get_info(request)
+            self.info_api.get_info(request)
         self.assertEqual("Parameter 'FileInfo' is not specified.", context.exception.message)
     
     def test_get_info_returns_file_not_found(self):
@@ -48,14 +48,14 @@ class TestViewerGetInfoApi(TestContext):
         view_options.file_info = TestFile.not_exist().ToFileInfo()
         request = GetInfoRequest(view_options)
         with self.assertRaises(ApiException) as context:
-            self.viewer_api.get_info(request)
+            self.info_api.get_info(request)
         self.assertEqual("Can't find file located at 'somefolder\\not-exist.docx'.", context.exception.message)
 
     def test_get_info_with_minimal_view_options(self):
         view_options = ViewOptions()
         view_options.file_info = TestFile.password_protected_docx().ToFileInfo()
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(4, len(data.pages))
         self.assertEqual(0, len(data.attachments))
 
@@ -63,7 +63,7 @@ class TestViewerGetInfoApi(TestContext):
         view_options = ViewOptions()
         view_options.file_info = TestFile.one_page_docx().ToFileInfo()
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(1, len(data.pages))
         self.assertEqual(0, len(data.attachments))
         self.assertEqual(1, data.pages[0].number)
@@ -73,7 +73,7 @@ class TestViewerGetInfoApi(TestContext):
         view_options.view_format = "HTML"
         view_options.file_info = TestFile.one_page_docx().ToFileInfo()
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(1, len(data.pages))
         self.assertEqual(0, len(data.attachments))
         self.assertEqual(1, data.pages[0].number)
@@ -84,7 +84,7 @@ class TestViewerGetInfoApi(TestContext):
         view_options.view_format = "JPG"
         view_options.file_info = TestFile.one_page_docx().ToFileInfo()
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(1, len(data.pages))
         self.assertEqual(0, len(data.attachments))
         self.assertEqual(1, data.pages[0].number)
@@ -97,7 +97,7 @@ class TestViewerGetInfoApi(TestContext):
         render_options.render_hidden_pages = True
         view_options.render_options = render_options
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(3, len(data.pages))
 
     def test_get_info_with_spreadsheet_paginate_sheets_option(self):
@@ -110,7 +110,7 @@ class TestViewerGetInfoApi(TestContext):
         render_options.spreadsheet_options = sp_options
         view_options.render_options = render_options
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(2, len(data.pages))
 
     def test_get_info_with_spreadsheet_render_hidden_rows_option(self):
@@ -124,7 +124,7 @@ class TestViewerGetInfoApi(TestContext):
         render_options.spreadsheet_options = sp_options
         view_options.render_options = render_options
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(3, len(data.pages))
 
     def test_get_info_with_cad_options(self):
@@ -136,7 +136,7 @@ class TestViewerGetInfoApi(TestContext):
         render_options.cad_options = cad_options
         view_options.render_options = render_options
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(3, len(data.pages))
 
     def test_get_info_with_project_options(self):
@@ -151,7 +151,7 @@ class TestViewerGetInfoApi(TestContext):
         render_options.project_management_options = project_options
         view_options.render_options = render_options
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(2, len(data.pages))
 
     def test_get_info_with_image_view_options(self):
@@ -162,7 +162,7 @@ class TestViewerGetInfoApi(TestContext):
         render_options.extract_text = True
         view_options.render_options = render_options
         request = GetInfoRequest(view_options)
-        data = self.viewer_api.get_info(request)
+        data = self.info_api.get_info(request)
         self.assertEqual(1, len(data.pages))
         self.assertGreater(len(data.pages[0].rows), 0)
 

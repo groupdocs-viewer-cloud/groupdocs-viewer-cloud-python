@@ -42,7 +42,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options = ViewOptions()
         request = CreateViewRequest(view_options)
         with self.assertRaises(ApiException) as context:
-            self.viewer_api.create_view(request)
+            self.view_api.create_view(request)
         self.assertEqual("Parameter 'FileInfo' is not specified.", context.exception.message)
     
     def test_create_view_returns_file_not_found(self):
@@ -50,14 +50,14 @@ class TestViewerCreateViewApi(TestContext):
         view_options.file_info = TestFile.not_exist().ToFileInfo()
         request = CreateViewRequest(view_options)
         with self.assertRaises(ApiException) as context:
-            self.viewer_api.create_view(request)
+            self.view_api.create_view(request)
         self.assertEqual("Can't find file located at 'somefolder\\not-exist.docx'.", context.exception.message)
 
     def test_create_view_with_minimal_view_options(self):
         view_options = ViewOptions()
         view_options.file_info = TestFile.password_protected_docx().ToFileInfo()
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(4, len(data.pages))
         self.assertEqual(0, len(data.attachments))
 
@@ -69,7 +69,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options = ViewOptions()
         view_options.file_info = TestFile.one_page_docx().ToFileInfo()
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(1, len(data.pages))
         self.assertEqual(0, len(data.attachments))
         self.assertEqual(1, data.pages[0].number)
@@ -79,7 +79,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options.view_format = "HTML"
         view_options.file_info = TestFile.one_page_docx().ToFileInfo()
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(1, len(data.pages))
         self.assertEqual(0, len(data.attachments))
         self.assertEqual(1, data.pages[0].number)
@@ -89,7 +89,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options.view_format = "JPG"
         view_options.file_info = TestFile.one_page_docx().ToFileInfo()
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(1, len(data.pages))
         self.assertEqual(0, len(data.attachments))
         self.assertEqual(1, data.pages[0].number)        
@@ -101,7 +101,7 @@ class TestViewerCreateViewApi(TestContext):
         render_options.render_hidden_pages = True
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(3, len(data.pages))
 
     def test_create_view_with_spreadsheet_paginate_sheets_option(self):
@@ -114,7 +114,7 @@ class TestViewerCreateViewApi(TestContext):
         render_options.spreadsheet_options = sp_options
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(2, len(data.pages))
 
     def test_create_view_with_spreadsheet_render_hidden_rows_option(self):
@@ -128,7 +128,7 @@ class TestViewerCreateViewApi(TestContext):
         render_options.spreadsheet_options = sp_options
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(3, len(data.pages))
 
     def test_create_view_with_cad_options(self):
@@ -140,7 +140,7 @@ class TestViewerCreateViewApi(TestContext):
         render_options.cad_options = cad_options
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(3, len(data.pages))
 
     def test_create_view_with_project_options(self):
@@ -155,7 +155,7 @@ class TestViewerCreateViewApi(TestContext):
         render_options.project_management_options = project_options
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(2, len(data.pages))
 
     def test_create_view_with_fonts_path_option(self):
@@ -164,7 +164,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options.view_format = "PNG"
         view_options.fonts_path = "font/ttf"
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(1, len(data.pages))
 
     def test_create_view_with_start_and_count_pages(self):
@@ -175,7 +175,7 @@ class TestViewerCreateViewApi(TestContext):
         render_options.count_pages_to_render = 2
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(2, len(data.pages))
         self.assertEqual(2, data.pages[0].number)
 
@@ -186,7 +186,7 @@ class TestViewerCreateViewApi(TestContext):
         render_options.external_resources = True
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
-        data = self.viewer_api.create_view(request)
+        data = self.view_api.create_view(request)
         self.assertEqual(1, len(data.pages))
         self.assertGreater(len(data.pages[0].resources), 0)
 
