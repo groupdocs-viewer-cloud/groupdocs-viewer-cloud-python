@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -147,7 +147,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options = ViewOptions()        
         view_options.file_info = TestFile.project_mpp().ToFileInfo()
         project_options = ProjectManagementOptions()
-        project_options.page_size = "Unknown"
+        project_options.page_size = "A4"
         project_options.time_unit = "Months"
         project_options.start_date = datetime.datetime(2008, 7, 1, 0, 0)
         project_options.end_date = datetime.datetime(2008, 7, 31, 0, 0)
@@ -156,7 +156,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
         data = self.view_api.create_view(request)
-        self.assertEqual(2, len(data.pages))
+        self.assertEqual(1, len(data.pages))
 
     def test_create_view_with_fonts_path_option(self):
         view_options = ViewOptions()        

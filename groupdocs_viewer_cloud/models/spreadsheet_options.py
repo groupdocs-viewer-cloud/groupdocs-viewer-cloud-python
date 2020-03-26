@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="SpreadsheetOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,7 +50,8 @@ class SpreadsheetOptions(object):
         'render_empty_columns': 'bool',
         'render_hidden_rows': 'bool',
         'render_hidden_columns': 'bool',
-        'render_print_area_only': 'bool'
+        'render_print_area_only': 'bool',
+        'text_overflow_mode': 'str'
     }
 
     attribute_map = {
@@ -61,10 +62,11 @@ class SpreadsheetOptions(object):
         'render_empty_columns': 'RenderEmptyColumns',
         'render_hidden_rows': 'RenderHiddenRows',
         'render_hidden_columns': 'RenderHiddenColumns',
-        'render_print_area_only': 'RenderPrintAreaOnly'
+        'render_print_area_only': 'RenderPrintAreaOnly',
+        'text_overflow_mode': 'TextOverflowMode'
     }
 
-    def __init__(self, paginate_sheets=None, count_rows_per_page=None, render_grid_lines=None, render_empty_rows=None, render_empty_columns=None, render_hidden_rows=None, render_hidden_columns=None, render_print_area_only=None, **kwargs):  # noqa: E501
+    def __init__(self, paginate_sheets=None, count_rows_per_page=None, render_grid_lines=None, render_empty_rows=None, render_empty_columns=None, render_hidden_rows=None, render_hidden_columns=None, render_print_area_only=None, text_overflow_mode=None, **kwargs):  # noqa: E501
         """Initializes new instance of SpreadsheetOptions"""  # noqa: E501
 
         self._paginate_sheets = None
@@ -75,6 +77,7 @@ class SpreadsheetOptions(object):
         self._render_hidden_rows = None
         self._render_hidden_columns = None
         self._render_print_area_only = None
+        self._text_overflow_mode = None
 
         if paginate_sheets is not None:
             self.paginate_sheets = paginate_sheets
@@ -92,6 +95,8 @@ class SpreadsheetOptions(object):
             self.render_hidden_columns = render_hidden_columns
         if render_print_area_only is not None:
             self.render_print_area_only = render_print_area_only
+        if text_overflow_mode is not None:
+            self.text_overflow_mode = text_overflow_mode
     
     @property
     def paginate_sheets(self):
@@ -300,6 +305,40 @@ class SpreadsheetOptions(object):
         if render_print_area_only is None:
             raise ValueError("Invalid value for `render_print_area_only`, must not be `None`")  # noqa: E501
         self._render_print_area_only = render_print_area_only
+    
+    @property
+    def text_overflow_mode(self):
+        """
+        Gets the text_overflow_mode.  # noqa: E501
+
+        The text overflow mode for rendering spreadsheet documents into HTML  # noqa: E501
+
+        :return: The text_overflow_mode.  # noqa: E501
+        :rtype: str
+        """
+        return self._text_overflow_mode
+
+    @text_overflow_mode.setter
+    def text_overflow_mode(self, text_overflow_mode):
+        """
+        Sets the text_overflow_mode.
+
+        The text overflow mode for rendering spreadsheet documents into HTML  # noqa: E501
+
+        :param text_overflow_mode: The text_overflow_mode.  # noqa: E501
+        :type: str
+        """
+        if text_overflow_mode is None:
+            raise ValueError("Invalid value for `text_overflow_mode`, must not be `None`")  # noqa: E501
+        allowed_values = ["Overlay", "OverlayIfNextIsEmpty", "AutoFitColumn", "HideText"]  # noqa: E501
+        if not text_overflow_mode.isdigit():	
+            if text_overflow_mode not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `text_overflow_mode` ({0}), must be one of {1}"  # noqa: E501
+                    .format(text_overflow_mode, allowed_values))
+            self._text_overflow_mode = text_overflow_mode
+        else:
+            self._text_overflow_mode = allowed_values[int(text_overflow_mode) if six.PY3 else long(text_overflow_mode)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""

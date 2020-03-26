@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -143,7 +143,7 @@ class TestViewerGetInfoApi(TestContext):
         view_options = ViewOptions()        
         view_options.file_info = TestFile.project_mpp().ToFileInfo()
         project_options = ProjectManagementOptions()
-        project_options.page_size = "Unknown"
+        project_options.page_size = "A4"
         project_options.time_unit = "Months"
         project_options.start_date = datetime.datetime(2008, 7, 1, 0, 0)
         project_options.end_date = datetime.datetime(2008, 7, 31, 0, 0)
@@ -152,7 +152,7 @@ class TestViewerGetInfoApi(TestContext):
         view_options.render_options = render_options
         request = GetInfoRequest(view_options)
         data = self.info_api.get_info(request)
-        self.assertEqual(2, len(data.pages))
+        self.assertEqual(1, len(data.pages))
 
     def test_get_info_with_image_view_options(self):
         view_options = ViewOptions()        
@@ -164,7 +164,7 @@ class TestViewerGetInfoApi(TestContext):
         request = GetInfoRequest(view_options)
         data = self.info_api.get_info(request)
         self.assertEqual(1, len(data.pages))
-        self.assertGreater(len(data.pages[0].rows), 0)
+        self.assertGreater(len(data.pages[0].lines), 0)
 
 if __name__ == '__main__':
     unittest.main()

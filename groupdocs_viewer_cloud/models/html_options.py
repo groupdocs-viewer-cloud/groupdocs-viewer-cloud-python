@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="HtmlOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,21 +47,30 @@ class HtmlOptions(RenderOptions):
     swagger_types = {
         'external_resources': 'bool',
         'resource_path': 'str',
-        'is_responsive': 'bool'
+        'is_responsive': 'bool',
+        'minify': 'bool',
+        'exclude_fonts': 'bool',
+        'fonts_to_exclude': 'list[str]'
     }
 
     attribute_map = {
         'external_resources': 'ExternalResources',
         'resource_path': 'ResourcePath',
-        'is_responsive': 'IsResponsive'
+        'is_responsive': 'IsResponsive',
+        'minify': 'Minify',
+        'exclude_fonts': 'ExcludeFonts',
+        'fonts_to_exclude': 'FontsToExclude'
     }
 
-    def __init__(self, external_resources=None, resource_path=None, is_responsive=None, **kwargs):  # noqa: E501
+    def __init__(self, external_resources=None, resource_path=None, is_responsive=None, minify=None, exclude_fonts=None, fonts_to_exclude=None, **kwargs):  # noqa: E501
         """Initializes new instance of HtmlOptions"""  # noqa: E501
 
         self._external_resources = None
         self.__resource_path = None
         self._is_responsive = None
+        self._minify = None
+        self._exclude_fonts = None
+        self._fonts_to_exclude = None
 
         if external_resources is not None:
             self.external_resources = external_resources
@@ -69,6 +78,12 @@ class HtmlOptions(RenderOptions):
             self.resource_path = resource_path
         if is_responsive is not None:
             self.is_responsive = is_responsive
+        if minify is not None:
+            self.minify = minify
+        if exclude_fonts is not None:
+            self.exclude_fonts = exclude_fonts
+        if fonts_to_exclude is not None:
+            self.fonts_to_exclude = fonts_to_exclude
 
         base = super(HtmlOptions, self)
         base.__init__(**kwargs)
@@ -151,6 +166,82 @@ class HtmlOptions(RenderOptions):
         if is_responsive is None:
             raise ValueError("Invalid value for `is_responsive`, must not be `None`")  # noqa: E501
         self._is_responsive = is_responsive
+    
+    @property
+    def minify(self):
+        """
+        Gets the minify.  # noqa: E501
+
+        Enables HTML content and HTML resources minification  # noqa: E501
+
+        :return: The minify.  # noqa: E501
+        :rtype: bool
+        """
+        return self._minify
+
+    @minify.setter
+    def minify(self, minify):
+        """
+        Sets the minify.
+
+        Enables HTML content and HTML resources minification  # noqa: E501
+
+        :param minify: The minify.  # noqa: E501
+        :type: bool
+        """
+        if minify is None:
+            raise ValueError("Invalid value for `minify`, must not be `None`")  # noqa: E501
+        self._minify = minify
+    
+    @property
+    def exclude_fonts(self):
+        """
+        Gets the exclude_fonts.  # noqa: E501
+
+        When enabled prevents adding any fonts into HTML document               # noqa: E501
+
+        :return: The exclude_fonts.  # noqa: E501
+        :rtype: bool
+        """
+        return self._exclude_fonts
+
+    @exclude_fonts.setter
+    def exclude_fonts(self, exclude_fonts):
+        """
+        Sets the exclude_fonts.
+
+        When enabled prevents adding any fonts into HTML document               # noqa: E501
+
+        :param exclude_fonts: The exclude_fonts.  # noqa: E501
+        :type: bool
+        """
+        if exclude_fonts is None:
+            raise ValueError("Invalid value for `exclude_fonts`, must not be `None`")  # noqa: E501
+        self._exclude_fonts = exclude_fonts
+    
+    @property
+    def fonts_to_exclude(self):
+        """
+        Gets the fonts_to_exclude.  # noqa: E501
+
+        This option is supported for presentations only. The list of font names, to exclude from HTML document               # noqa: E501
+
+        :return: The fonts_to_exclude.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._fonts_to_exclude
+
+    @fonts_to_exclude.setter
+    def fonts_to_exclude(self, fonts_to_exclude):
+        """
+        Sets the fonts_to_exclude.
+
+        This option is supported for presentations only. The list of font names, to exclude from HTML document               # noqa: E501
+
+        :param fonts_to_exclude: The fonts_to_exclude.  # noqa: E501
+        :type: list[str]
+        """
+        self._fonts_to_exclude = fonts_to_exclude
 
     def to_dict(self):
         """Returns the model properties as a dict"""

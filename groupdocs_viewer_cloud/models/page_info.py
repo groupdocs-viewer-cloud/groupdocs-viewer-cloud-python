@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="PageInfo.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,23 +46,26 @@ class PageInfo(object):
         'number': 'int',
         'width': 'int',
         'height': 'int',
-        'rows': 'list[Row]'
+        'visible': 'bool',
+        'lines': 'list[Line]'
     }
 
     attribute_map = {
         'number': 'Number',
         'width': 'Width',
         'height': 'Height',
-        'rows': 'Rows'
+        'visible': 'Visible',
+        'lines': 'Lines'
     }
 
-    def __init__(self, number=None, width=None, height=None, rows=None, **kwargs):  # noqa: E501
+    def __init__(self, number=None, width=None, height=None, visible=None, lines=None, **kwargs):  # noqa: E501
         """Initializes new instance of PageInfo"""  # noqa: E501
 
         self._number = None
         self._width = None
         self._height = None
-        self._rows = None
+        self._visible = None
+        self._lines = None
 
         if number is not None:
             self.number = number
@@ -70,15 +73,17 @@ class PageInfo(object):
             self.width = width
         if height is not None:
             self.height = height
-        if rows is not None:
-            self.rows = rows
+        if visible is not None:
+            self.visible = visible
+        if lines is not None:
+            self.lines = lines
     
     @property
     def number(self):
         """
         Gets the number.  # noqa: E501
 
-        Page number  # noqa: E501
+        The page number  # noqa: E501
 
         :return: The number.  # noqa: E501
         :rtype: int
@@ -90,7 +95,7 @@ class PageInfo(object):
         """
         Sets the number.
 
-        Page number  # noqa: E501
+        The page number  # noqa: E501
 
         :param number: The number.  # noqa: E501
         :type: int
@@ -104,7 +109,7 @@ class PageInfo(object):
         """
         Gets the width.  # noqa: E501
 
-        Image Page width  # noqa: E501
+        The width of the page in pixels when viewing as JPG or PNG  # noqa: E501
 
         :return: The width.  # noqa: E501
         :rtype: int
@@ -116,7 +121,7 @@ class PageInfo(object):
         """
         Sets the width.
 
-        Image Page width  # noqa: E501
+        The width of the page in pixels when viewing as JPG or PNG  # noqa: E501
 
         :param width: The width.  # noqa: E501
         :type: int
@@ -130,7 +135,7 @@ class PageInfo(object):
         """
         Gets the height.  # noqa: E501
 
-        Image Page height  # noqa: E501
+        The height of the page in pixels when viewing as JPG or PNG  # noqa: E501
 
         :return: The height.  # noqa: E501
         :rtype: int
@@ -142,7 +147,7 @@ class PageInfo(object):
         """
         Sets the height.
 
-        Image Page height  # noqa: E501
+        The height of the page in pixels when viewing as JPG or PNG  # noqa: E501
 
         :param height: The height.  # noqa: E501
         :type: int
@@ -152,28 +157,54 @@ class PageInfo(object):
         self._height = height
     
     @property
-    def rows(self):
+    def visible(self):
         """
-        Gets the rows.  # noqa: E501
+        Gets the visible.  # noqa: E501
 
-        Image Page rows  # noqa: E501
+        The page visibility indicator  # noqa: E501
 
-        :return: The rows.  # noqa: E501
-        :rtype: list[Row]
+        :return: The visible.  # noqa: E501
+        :rtype: bool
         """
-        return self._rows
+        return self._visible
 
-    @rows.setter
-    def rows(self, rows):
+    @visible.setter
+    def visible(self, visible):
         """
-        Sets the rows.
+        Sets the visible.
 
-        Image Page rows  # noqa: E501
+        The page visibility indicator  # noqa: E501
 
-        :param rows: The rows.  # noqa: E501
-        :type: list[Row]
+        :param visible: The visible.  # noqa: E501
+        :type: bool
         """
-        self._rows = rows
+        if visible is None:
+            raise ValueError("Invalid value for `visible`, must not be `None`")  # noqa: E501
+        self._visible = visible
+    
+    @property
+    def lines(self):
+        """
+        Gets the lines.  # noqa: E501
+
+        The lines contained by the page when viewing as JPG or PNG with enabled Text Extraction  # noqa: E501
+
+        :return: The lines.  # noqa: E501
+        :rtype: list[Line]
+        """
+        return self._lines
+
+    @lines.setter
+    def lines(self, lines):
+        """
+        Sets the lines.
+
+        The lines contained by the page when viewing as JPG or PNG with enabled Text Extraction  # noqa: E501
+
+        :param lines: The lines.  # noqa: E501
+        :type: list[Line]
+        """
+        self._lines = lines
 
     def to_dict(self):
         """Returns the model properties as a dict"""

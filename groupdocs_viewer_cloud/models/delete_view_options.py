@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="DeleteViewOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,20 +43,25 @@ class DeleteViewOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'file_info': 'FileInfo'
+        'file_info': 'FileInfo',
+        'output_path': 'str'
     }
 
     attribute_map = {
-        'file_info': 'FileInfo'
+        'file_info': 'FileInfo',
+        'output_path': 'OutputPath'
     }
 
-    def __init__(self, file_info=None, **kwargs):  # noqa: E501
+    def __init__(self, file_info=None, output_path=None, **kwargs):  # noqa: E501
         """Initializes new instance of DeleteViewOptions"""  # noqa: E501
 
         self._file_info = None
+        self._output_path = None
 
         if file_info is not None:
             self.file_info = file_info
+        if output_path is not None:
+            self.output_path = output_path
     
     @property
     def file_info(self):
@@ -81,6 +86,30 @@ class DeleteViewOptions(object):
         :type: FileInfo
         """
         self._file_info = file_info
+    
+    @property
+    def output_path(self):
+        """
+        Gets the output_path.  # noqa: E501
+
+        The output path Default value is 'viewer\\{input file path}_{file extension}\\'  # noqa: E501
+
+        :return: The output_path.  # noqa: E501
+        :rtype: str
+        """
+        return self._output_path
+
+    @output_path.setter
+    def output_path(self, output_path):
+        """
+        Sets the output_path.
+
+        The output path Default value is 'viewer\\{input file path}_{file extension}\\'  # noqa: E501
+
+        :param output_path: The output_path.  # noqa: E501
+        :type: str
+        """
+        self._output_path = output_path
 
     def to_dict(self):
         """Returns the model properties as a dict"""

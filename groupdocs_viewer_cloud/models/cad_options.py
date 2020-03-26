@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="CadOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,21 +45,33 @@ class CadOptions(object):
     swagger_types = {
         'scale_factor': 'float',
         'width': 'int',
-        'height': 'int'
+        'height': 'int',
+        'tiles': 'list[Tile]',
+        'render_layouts': 'bool',
+        'layout_name': 'str',
+        'layers': 'list[str]'
     }
 
     attribute_map = {
         'scale_factor': 'ScaleFactor',
         'width': 'Width',
-        'height': 'Height'
+        'height': 'Height',
+        'tiles': 'Tiles',
+        'render_layouts': 'RenderLayouts',
+        'layout_name': 'LayoutName',
+        'layers': 'Layers'
     }
 
-    def __init__(self, scale_factor=None, width=None, height=None, **kwargs):  # noqa: E501
+    def __init__(self, scale_factor=None, width=None, height=None, tiles=None, render_layouts=None, layout_name=None, layers=None, **kwargs):  # noqa: E501
         """Initializes new instance of CadOptions"""  # noqa: E501
 
         self._scale_factor = None
         self._width = None
         self._height = None
+        self._tiles = None
+        self._render_layouts = None
+        self._layout_name = None
+        self._layers = None
 
         if scale_factor is not None:
             self.scale_factor = scale_factor
@@ -67,6 +79,14 @@ class CadOptions(object):
             self.width = width
         if height is not None:
             self.height = height
+        if tiles is not None:
+            self.tiles = tiles
+        if render_layouts is not None:
+            self.render_layouts = render_layouts
+        if layout_name is not None:
+            self.layout_name = layout_name
+        if layers is not None:
+            self.layers = layers
     
     @property
     def scale_factor(self):
@@ -145,6 +165,104 @@ class CadOptions(object):
         if height is None:
             raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
         self._height = height
+    
+    @property
+    def tiles(self):
+        """
+        Gets the tiles.  # noqa: E501
+
+        The drawing regions to render This option supported only for DWG and DWT file types The RenderLayouts and LayoutName options are ignored when rendering by tiles  # noqa: E501
+
+        :return: The tiles.  # noqa: E501
+        :rtype: list[Tile]
+        """
+        return self._tiles
+
+    @tiles.setter
+    def tiles(self, tiles):
+        """
+        Sets the tiles.
+
+        The drawing regions to render This option supported only for DWG and DWT file types The RenderLayouts and LayoutName options are ignored when rendering by tiles  # noqa: E501
+
+        :param tiles: The tiles.  # noqa: E501
+        :type: list[Tile]
+        """
+        self._tiles = tiles
+    
+    @property
+    def render_layouts(self):
+        """
+        Gets the render_layouts.  # noqa: E501
+
+        Indicates whether layouts from CAD document should be rendered  # noqa: E501
+
+        :return: The render_layouts.  # noqa: E501
+        :rtype: bool
+        """
+        return self._render_layouts
+
+    @render_layouts.setter
+    def render_layouts(self, render_layouts):
+        """
+        Sets the render_layouts.
+
+        Indicates whether layouts from CAD document should be rendered  # noqa: E501
+
+        :param render_layouts: The render_layouts.  # noqa: E501
+        :type: bool
+        """
+        if render_layouts is None:
+            raise ValueError("Invalid value for `render_layouts`, must not be `None`")  # noqa: E501
+        self._render_layouts = render_layouts
+    
+    @property
+    def layout_name(self):
+        """
+        Gets the layout_name.  # noqa: E501
+
+        The name of the specific layout to render. Layout name is case-sensitive  # noqa: E501
+
+        :return: The layout_name.  # noqa: E501
+        :rtype: str
+        """
+        return self._layout_name
+
+    @layout_name.setter
+    def layout_name(self, layout_name):
+        """
+        Sets the layout_name.
+
+        The name of the specific layout to render. Layout name is case-sensitive  # noqa: E501
+
+        :param layout_name: The layout_name.  # noqa: E501
+        :type: str
+        """
+        self._layout_name = layout_name
+    
+    @property
+    def layers(self):
+        """
+        Gets the layers.  # noqa: E501
+
+        The CAD drawing layers to render By default all layers are rendered; Layer names are case-sensitive  # noqa: E501
+
+        :return: The layers.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._layers
+
+    @layers.setter
+    def layers(self, layers):
+        """
+        Sets the layers.
+
+        The CAD drawing layers to render By default all layers are rendered; Layer names are case-sensitive  # noqa: E501
+
+        :param layers: The layers.  # noqa: E501
+        :type: list[str]
+        """
+        self._layers = layers
 
     def to_dict(self):
         """Returns the model properties as a dict"""

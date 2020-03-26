@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="Watermark.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -126,7 +126,7 @@ class Watermark(object):
         """
         Gets the position.  # noqa: E501
 
-        Watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \"Diagonal\".  # noqa: E501
+        Watermark position. Default value is \"Diagonal\".  # noqa: E501
 
         :return: The position.  # noqa: E501
         :rtype: str
@@ -138,12 +138,22 @@ class Watermark(object):
         """
         Sets the position.
 
-        Watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \"Diagonal\".  # noqa: E501
+        Watermark position. Default value is \"Diagonal\".  # noqa: E501
 
         :param position: The position.  # noqa: E501
         :type: str
         """
-        self._position = position
+        if position is None:
+            raise ValueError("Invalid value for `position`, must not be `None`")  # noqa: E501
+        allowed_values = ["Diagonal", "TopLeft", "TopCenter", "TopRight", "BottomLeft", "BottomCenter", "BottomRight"]  # noqa: E501
+        if not position.isdigit():	
+            if position not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `position` ({0}), must be one of {1}"  # noqa: E501
+                    .format(position, allowed_values))
+            self._position = position
+        else:
+            self._position = allowed_values[int(position) if six.PY3 else long(position)]
     
     @property
     def size(self):

@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="EmailOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -68,7 +68,7 @@ class EmailOptions(object):
         """
         Gets the page_size.  # noqa: E501
 
-        The size of the output page when rendering as PDF or image. Supported values {Unknown|Letter|Ledger|A0|A1|A2|A3}: 1. Unknown - the default, unspecified page size. 2. Letter - the size of the Letter page in points is 792x612. 3. Ledger - the size of the Letter page in points is 1224x792. 4. A0 - the size of the A0 page in points is 3371x2384. 5. A1 - the size of the A1 page in points is 2384x1685. 6. A2 - the size of the A2 page in points is 1684x1190. 7. A3 - the size of the A3 page in points is 1190x842. 8. A4 - the size of the A4 page in points is 842x595.  # noqa: E501
+        The size of the output page when rendering as PDF or image.  # noqa: E501
 
         :return: The page_size.  # noqa: E501
         :rtype: str
@@ -80,12 +80,22 @@ class EmailOptions(object):
         """
         Sets the page_size.
 
-        The size of the output page when rendering as PDF or image. Supported values {Unknown|Letter|Ledger|A0|A1|A2|A3}: 1. Unknown - the default, unspecified page size. 2. Letter - the size of the Letter page in points is 792x612. 3. Ledger - the size of the Letter page in points is 1224x792. 4. A0 - the size of the A0 page in points is 3371x2384. 5. A1 - the size of the A1 page in points is 2384x1685. 6. A2 - the size of the A2 page in points is 1684x1190. 7. A3 - the size of the A3 page in points is 1190x842. 8. A4 - the size of the A4 page in points is 842x595.  # noqa: E501
+        The size of the output page when rendering as PDF or image.  # noqa: E501
 
         :param page_size: The page_size.  # noqa: E501
         :type: str
         """
-        self._page_size = page_size
+        if page_size is None:
+            raise ValueError("Invalid value for `page_size`, must not be `None`")  # noqa: E501
+        allowed_values = ["Unspecified", "Letter", "Ledger", "A0", "A1", "A2", "A3", "A4"]  # noqa: E501
+        if not page_size.isdigit():	
+            if page_size not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `page_size` ({0}), must be one of {1}"  # noqa: E501
+                    .format(page_size, allowed_values))
+            self._page_size = page_size
+        else:
+            self._page_size = allowed_values[int(page_size) if six.PY3 else long(page_size)]
     
     @property
     def field_labels(self):

@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="ViewOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -112,7 +112,7 @@ class ViewOptions(object):
         """
         Gets the view_format.  # noqa: E501
 
-        View format (HTML, PNG, JPG, BMP or PDF) Default value is HTML.  # noqa: E501
+        View format (HTML, PNG, JPG, or PDF) Default value is HTML.  # noqa: E501
 
         :return: The view_format.  # noqa: E501
         :rtype: str
@@ -124,14 +124,14 @@ class ViewOptions(object):
         """
         Sets the view_format.
 
-        View format (HTML, PNG, JPG, BMP or PDF) Default value is HTML.  # noqa: E501
+        View format (HTML, PNG, JPG, or PDF) Default value is HTML.  # noqa: E501
 
         :param view_format: The view_format.  # noqa: E501
         :type: str
         """
         if view_format is None:
             raise ValueError("Invalid value for `view_format`, must not be `None`")  # noqa: E501
-        allowed_values = ["HTML", "PNG", "JPG", "BMP", "PDF"]  # noqa: E501
+        allowed_values = ["HTML", "PNG", "JPG", "PDF"]  # noqa: E501
         if not view_format.isdigit():	
             if view_format not in allowed_values:
                 raise ValueError(
@@ -146,7 +146,7 @@ class ViewOptions(object):
         """
         Gets the output_path.  # noqa: E501
 
-        The output path. Default value is 'viewer\\{input file path}_{file extension}\\'  # noqa: E501
+        The output path Default value is 'viewer\\{input file path}_{file extension}\\'  # noqa: E501
 
         :return: The output_path.  # noqa: E501
         :rtype: str
@@ -158,7 +158,7 @@ class ViewOptions(object):
         """
         Sets the output_path.
 
-        The output path. Default value is 'viewer\\{input file path}_{file extension}\\'  # noqa: E501
+        The output path Default value is 'viewer\\{input file path}_{file extension}\\'  # noqa: E501
 
         :param output_path: The output_path.  # noqa: E501
         :type: str
