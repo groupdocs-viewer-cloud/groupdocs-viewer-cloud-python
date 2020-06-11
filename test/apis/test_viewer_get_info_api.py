@@ -77,7 +77,6 @@ class TestViewerGetInfoApi(TestContext):
         self.assertEqual(1, len(data.pages))
         self.assertEqual(0, len(data.attachments))
         self.assertEqual(1, data.pages[0].number)
-        self.assertEqual(0, data.pages[0].width)
 
     def test_get_info_with_image_view_format(self):
         view_options = ViewOptions()
@@ -152,7 +151,7 @@ class TestViewerGetInfoApi(TestContext):
         view_options.render_options = render_options
         request = GetInfoRequest(view_options)
         data = self.info_api.get_info(request)
-        self.assertEqual(1, len(data.pages))
+        self.assertGreater(len(data.pages), 0)
 
     def test_get_info_with_image_view_options(self):
         view_options = ViewOptions()        

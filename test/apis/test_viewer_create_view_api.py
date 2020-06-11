@@ -156,7 +156,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
         data = self.view_api.create_view(request)
-        self.assertEqual(1, len(data.pages))
+        self.assertGreater(len(data.pages), 0)
 
     def test_create_view_with_fonts_path_option(self):
         view_options = ViewOptions()        
