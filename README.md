@@ -65,12 +65,13 @@ python setup.py install
 # Import module
 import groupdocs_viewer_cloud
 
-# Get your app_sid and app_key at https://dashboard.groupdocs.cloud (free registration is required).
-app_sid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-app_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+# Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+my_client_id = ""
+my_client_secret = ""
 
 # Create instance of the API
-api = groupdocs_viewer_cloud.InfoApi.from_keys(app_sid, app_key)
+configuration = groupdocs_viewer_cloud.Configuration(my_client_id, my_client_secret)
+api = groupdocs_viewer_cloud.InfoApi.from_config(configuration)
 
 try:
     # Retrieve supported file-formats
