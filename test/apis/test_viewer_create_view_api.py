@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -115,7 +115,7 @@ class TestViewerCreateViewApi(TestContext):
         view_options.render_options = render_options
         request = CreateViewRequest(view_options)
         data = self.view_api.create_view(request)
-        self.assertEqual(2, len(data.pages))
+        self.assertEqual(3, len(data.pages))
 
     def test_create_view_with_spreadsheet_render_hidden_rows_option(self):
         view_options = ViewOptions()        

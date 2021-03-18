@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="PdfOptions.py">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -48,7 +48,7 @@ class PdfOptions(RenderOptions):
         'jpg_quality': 'int',
         'document_open_password': 'str',
         'permissions_password': 'str',
-        'permissions': 'str'
+        'permissions': 'list[str]'
     }
 
     attribute_map = {
@@ -160,10 +160,10 @@ class PdfOptions(RenderOptions):
         """
         Gets the permissions.  # noqa: E501
 
-        The PDF document permissions such as printing, modification and data extraction  # noqa: E501
+        The array of PDF document permissions. Allowed values are: AllowAll, DenyPrinting, DenyModification, DenyDataExtraction, DenyAll Default value is AllowAll, if now permissions are set.  # noqa: E501
 
         :return: The permissions.  # noqa: E501
-        :rtype: str
+        :rtype: list[str]
         """
         return self._permissions
 
@@ -172,22 +172,12 @@ class PdfOptions(RenderOptions):
         """
         Sets the permissions.
 
-        The PDF document permissions such as printing, modification and data extraction  # noqa: E501
+        The array of PDF document permissions. Allowed values are: AllowAll, DenyPrinting, DenyModification, DenyDataExtraction, DenyAll Default value is AllowAll, if now permissions are set.  # noqa: E501
 
         :param permissions: The permissions.  # noqa: E501
-        :type: str
+        :type: list[str]
         """
-        if permissions is None:
-            raise ValueError("Invalid value for `permissions`, must not be `None`")  # noqa: E501
-        allowed_values = ["AllowAll", "DenyPrinting", "DenyModification", "DenyDataExtraction", "DenyAll"]  # noqa: E501
-        if not permissions.isdigit():	
-            if permissions not in allowed_values:
-                raise ValueError(
-                    "Invalid value for `permissions` ({0}), must be one of {1}"  # noqa: E501
-                    .format(permissions, allowed_values))
-            self._permissions = permissions
-        else:
-            self._permissions = allowed_values[int(permissions) if six.PY3 else long(permissions)]
+        self._permissions = permissions
 
     def to_dict(self):
         """Returns the model properties as a dict"""
