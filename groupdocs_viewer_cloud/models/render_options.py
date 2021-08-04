@@ -59,7 +59,10 @@ class RenderOptions(object):
         'pdf_document_options': 'PdfDocumentOptions',
         'word_processing_options': 'WordProcessingOptions',
         'outlook_options': 'OutlookOptions',
-        'archive_options': 'ArchiveOptions'
+        'archive_options': 'ArchiveOptions',
+        'text_options': 'TextOptions',
+        'mail_storage_options': 'MailStorageOptions',
+        'visio_rendering_options': 'VisioRenderingOptions'
     }
 
     attribute_map = {
@@ -79,10 +82,13 @@ class RenderOptions(object):
         'pdf_document_options': 'PdfDocumentOptions',
         'word_processing_options': 'WordProcessingOptions',
         'outlook_options': 'OutlookOptions',
-        'archive_options': 'ArchiveOptions'
+        'archive_options': 'ArchiveOptions',
+        'text_options': 'TextOptions',
+        'mail_storage_options': 'MailStorageOptions',
+        'visio_rendering_options': 'VisioRenderingOptions'
     }
 
-    def __init__(self, start_page_number=None, count_pages_to_render=None, pages_to_render=None, page_rotations=None, default_font_name=None, default_encoding=None, render_comments=None, render_notes=None, render_hidden_pages=None, spreadsheet_options=None, cad_options=None, email_options=None, project_management_options=None, pdf_document_options=None, word_processing_options=None, outlook_options=None, archive_options=None, **kwargs):  # noqa: E501
+    def __init__(self, start_page_number=None, count_pages_to_render=None, pages_to_render=None, page_rotations=None, default_font_name=None, default_encoding=None, render_comments=None, render_notes=None, render_hidden_pages=None, spreadsheet_options=None, cad_options=None, email_options=None, project_management_options=None, pdf_document_options=None, word_processing_options=None, outlook_options=None, archive_options=None, text_options=None, mail_storage_options=None, visio_rendering_options=None, **kwargs):  # noqa: E501
         """Initializes new instance of RenderOptions"""  # noqa: E501
 
         self._start_page_number = None
@@ -102,6 +108,9 @@ class RenderOptions(object):
         self._word_processing_options = None
         self._outlook_options = None
         self._archive_options = None
+        self._text_options = None
+        self._mail_storage_options = None
+        self._visio_rendering_options = None
 
         if start_page_number is not None:
             self.start_page_number = start_page_number
@@ -137,6 +146,12 @@ class RenderOptions(object):
             self.outlook_options = outlook_options
         if archive_options is not None:
             self.archive_options = archive_options
+        if text_options is not None:
+            self.text_options = text_options
+        if mail_storage_options is not None:
+            self.mail_storage_options = mail_storage_options
+        if visio_rendering_options is not None:
+            self.visio_rendering_options = visio_rendering_options
     
     @property
     def start_page_number(self):
@@ -555,6 +570,78 @@ class RenderOptions(object):
         :type: ArchiveOptions
         """
         self._archive_options = archive_options
+    
+    @property
+    def text_options(self):
+        """
+        Gets the text_options.  # noqa: E501
+
+        Rendering options for Text source file formats  # noqa: E501
+
+        :return: The text_options.  # noqa: E501
+        :rtype: TextOptions
+        """
+        return self._text_options
+
+    @text_options.setter
+    def text_options(self, text_options):
+        """
+        Sets the text_options.
+
+        Rendering options for Text source file formats  # noqa: E501
+
+        :param text_options: The text_options.  # noqa: E501
+        :type: TextOptions
+        """
+        self._text_options = text_options
+    
+    @property
+    def mail_storage_options(self):
+        """
+        Gets the mail_storage_options.  # noqa: E501
+
+        Rendering options for Mail storage (Lotus Notes, MBox) data files.  # noqa: E501
+
+        :return: The mail_storage_options.  # noqa: E501
+        :rtype: MailStorageOptions
+        """
+        return self._mail_storage_options
+
+    @mail_storage_options.setter
+    def mail_storage_options(self, mail_storage_options):
+        """
+        Sets the mail_storage_options.
+
+        Rendering options for Mail storage (Lotus Notes, MBox) data files.  # noqa: E501
+
+        :param mail_storage_options: The mail_storage_options.  # noqa: E501
+        :type: MailStorageOptions
+        """
+        self._mail_storage_options = mail_storage_options
+    
+    @property
+    def visio_rendering_options(self):
+        """
+        Gets the visio_rendering_options.  # noqa: E501
+
+        Rendering options for Visio source file formats  # noqa: E501
+
+        :return: The visio_rendering_options.  # noqa: E501
+        :rtype: VisioRenderingOptions
+        """
+        return self._visio_rendering_options
+
+    @visio_rendering_options.setter
+    def visio_rendering_options(self, visio_rendering_options):
+        """
+        Sets the visio_rendering_options.
+
+        Rendering options for Visio source file formats  # noqa: E501
+
+        :param visio_rendering_options: The visio_rendering_options.  # noqa: E501
+        :type: VisioRenderingOptions
+        """
+        self._visio_rendering_options = visio_rendering_options
 
     def to_dict(self):
         """Returns the model properties as a dict"""

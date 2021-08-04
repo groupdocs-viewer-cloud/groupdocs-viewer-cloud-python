@@ -45,11 +45,13 @@ class SpreadsheetOptions(object):
     swagger_types = {
         'paginate_sheets': 'bool',
         'count_rows_per_page': 'int',
+        'count_columns_per_page': 'int',
         'render_grid_lines': 'bool',
         'render_empty_rows': 'bool',
         'render_empty_columns': 'bool',
         'render_hidden_rows': 'bool',
         'render_hidden_columns': 'bool',
+        'render_headings': 'bool',
         'render_print_area_only': 'bool',
         'text_overflow_mode': 'str'
     }
@@ -57,25 +59,29 @@ class SpreadsheetOptions(object):
     attribute_map = {
         'paginate_sheets': 'PaginateSheets',
         'count_rows_per_page': 'CountRowsPerPage',
+        'count_columns_per_page': 'CountColumnsPerPage',
         'render_grid_lines': 'RenderGridLines',
         'render_empty_rows': 'RenderEmptyRows',
         'render_empty_columns': 'RenderEmptyColumns',
         'render_hidden_rows': 'RenderHiddenRows',
         'render_hidden_columns': 'RenderHiddenColumns',
+        'render_headings': 'RenderHeadings',
         'render_print_area_only': 'RenderPrintAreaOnly',
         'text_overflow_mode': 'TextOverflowMode'
     }
 
-    def __init__(self, paginate_sheets=None, count_rows_per_page=None, render_grid_lines=None, render_empty_rows=None, render_empty_columns=None, render_hidden_rows=None, render_hidden_columns=None, render_print_area_only=None, text_overflow_mode=None, **kwargs):  # noqa: E501
+    def __init__(self, paginate_sheets=None, count_rows_per_page=None, count_columns_per_page=None, render_grid_lines=None, render_empty_rows=None, render_empty_columns=None, render_hidden_rows=None, render_hidden_columns=None, render_headings=None, render_print_area_only=None, text_overflow_mode=None, **kwargs):  # noqa: E501
         """Initializes new instance of SpreadsheetOptions"""  # noqa: E501
 
         self._paginate_sheets = None
         self._count_rows_per_page = None
+        self._count_columns_per_page = None
         self._render_grid_lines = None
         self._render_empty_rows = None
         self._render_empty_columns = None
         self._render_hidden_rows = None
         self._render_hidden_columns = None
+        self._render_headings = None
         self._render_print_area_only = None
         self._text_overflow_mode = None
 
@@ -83,6 +89,8 @@ class SpreadsheetOptions(object):
             self.paginate_sheets = paginate_sheets
         if count_rows_per_page is not None:
             self.count_rows_per_page = count_rows_per_page
+        if count_columns_per_page is not None:
+            self.count_columns_per_page = count_columns_per_page
         if render_grid_lines is not None:
             self.render_grid_lines = render_grid_lines
         if render_empty_rows is not None:
@@ -93,6 +101,8 @@ class SpreadsheetOptions(object):
             self.render_hidden_rows = render_hidden_rows
         if render_hidden_columns is not None:
             self.render_hidden_columns = render_hidden_columns
+        if render_headings is not None:
+            self.render_headings = render_headings
         if render_print_area_only is not None:
             self.render_print_area_only = render_print_area_only
         if text_overflow_mode is not None:
@@ -149,6 +159,32 @@ class SpreadsheetOptions(object):
         if count_rows_per_page is None:
             raise ValueError("Invalid value for `count_rows_per_page`, must not be `None`")  # noqa: E501
         self._count_rows_per_page = count_rows_per_page
+    
+    @property
+    def count_columns_per_page(self):
+        """
+        Gets the count_columns_per_page.  # noqa: E501
+
+        The columns count to include into each page when splitting worksheet into pages.  # noqa: E501
+
+        :return: The count_columns_per_page.  # noqa: E501
+        :rtype: int
+        """
+        return self._count_columns_per_page
+
+    @count_columns_per_page.setter
+    def count_columns_per_page(self, count_columns_per_page):
+        """
+        Sets the count_columns_per_page.
+
+        The columns count to include into each page when splitting worksheet into pages.  # noqa: E501
+
+        :param count_columns_per_page: The count_columns_per_page.  # noqa: E501
+        :type: int
+        """
+        if count_columns_per_page is None:
+            raise ValueError("Invalid value for `count_columns_per_page`, must not be `None`")  # noqa: E501
+        self._count_columns_per_page = count_columns_per_page
     
     @property
     def render_grid_lines(self):
@@ -279,6 +315,32 @@ class SpreadsheetOptions(object):
         if render_hidden_columns is None:
             raise ValueError("Invalid value for `render_hidden_columns`, must not be `None`")  # noqa: E501
         self._render_hidden_columns = render_hidden_columns
+    
+    @property
+    def render_headings(self):
+        """
+        Gets the render_headings.  # noqa: E501
+
+        Enables headings rendering.  # noqa: E501
+
+        :return: The render_headings.  # noqa: E501
+        :rtype: bool
+        """
+        return self._render_headings
+
+    @render_headings.setter
+    def render_headings(self, render_headings):
+        """
+        Sets the render_headings.
+
+        Enables headings rendering.  # noqa: E501
+
+        :param render_headings: The render_headings.  # noqa: E501
+        :type: bool
+        """
+        if render_headings is None:
+            raise ValueError("Invalid value for `render_headings`, must not be `None`")  # noqa: E501
+        self._render_headings = render_headings
     
     @property
     def render_print_area_only(self):

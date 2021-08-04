@@ -47,7 +47,8 @@ class PdfDocumentOptions(object):
         'enable_layered_rendering': 'bool',
         'enable_font_hinting': 'bool',
         'render_original_page_size': 'bool',
-        'image_quality': 'str'
+        'image_quality': 'str',
+        'render_text_as_image': 'bool'
     }
 
     attribute_map = {
@@ -55,10 +56,11 @@ class PdfDocumentOptions(object):
         'enable_layered_rendering': 'EnableLayeredRendering',
         'enable_font_hinting': 'EnableFontHinting',
         'render_original_page_size': 'RenderOriginalPageSize',
-        'image_quality': 'ImageQuality'
+        'image_quality': 'ImageQuality',
+        'render_text_as_image': 'RenderTextAsImage'
     }
 
-    def __init__(self, disable_chars_grouping=None, enable_layered_rendering=None, enable_font_hinting=None, render_original_page_size=None, image_quality=None, **kwargs):  # noqa: E501
+    def __init__(self, disable_chars_grouping=None, enable_layered_rendering=None, enable_font_hinting=None, render_original_page_size=None, image_quality=None, render_text_as_image=None, **kwargs):  # noqa: E501
         """Initializes new instance of PdfDocumentOptions"""  # noqa: E501
 
         self._disable_chars_grouping = None
@@ -66,6 +68,7 @@ class PdfDocumentOptions(object):
         self._enable_font_hinting = None
         self._render_original_page_size = None
         self._image_quality = None
+        self._render_text_as_image = None
 
         if disable_chars_grouping is not None:
             self.disable_chars_grouping = disable_chars_grouping
@@ -77,6 +80,8 @@ class PdfDocumentOptions(object):
             self.render_original_page_size = render_original_page_size
         if image_quality is not None:
             self.image_quality = image_quality
+        if render_text_as_image is not None:
+            self.render_text_as_image = render_text_as_image
     
     @property
     def disable_chars_grouping(self):
@@ -215,6 +220,32 @@ class PdfDocumentOptions(object):
             self._image_quality = image_quality
         else:
             self._image_quality = allowed_values[int(image_quality) if six.PY3 else long(image_quality)]
+    
+    @property
+    def render_text_as_image(self):
+        """
+        Gets the render_text_as_image.  # noqa: E501
+
+        When this option is set to true, the text is rendered as an image in the output HTML. Enable this option to make text unselectable or to fix characters rendering and make HTML look like PDF. The default value is false. This option is supported when rendering into HTML.  # noqa: E501
+
+        :return: The render_text_as_image.  # noqa: E501
+        :rtype: bool
+        """
+        return self._render_text_as_image
+
+    @render_text_as_image.setter
+    def render_text_as_image(self, render_text_as_image):
+        """
+        Sets the render_text_as_image.
+
+        When this option is set to true, the text is rendered as an image in the output HTML. Enable this option to make text unselectable or to fix characters rendering and make HTML look like PDF. The default value is false. This option is supported when rendering into HTML.  # noqa: E501
+
+        :param render_text_as_image: The render_text_as_image.  # noqa: E501
+        :type: bool
+        """
+        if render_text_as_image is None:
+            raise ValueError("Invalid value for `render_text_as_image`, must not be `None`")  # noqa: E501
+        self._render_text_as_image = render_text_as_image
 
     def to_dict(self):
         """Returns the model properties as a dict"""

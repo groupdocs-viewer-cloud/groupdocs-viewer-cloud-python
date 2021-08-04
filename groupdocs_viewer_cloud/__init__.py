@@ -45,6 +45,7 @@ from groupdocs_viewer_cloud.models.formats_result import FormatsResult
 from groupdocs_viewer_cloud.models.info_result import InfoResult
 from groupdocs_viewer_cloud.models.layer import Layer
 from groupdocs_viewer_cloud.models.layout import Layout
+from groupdocs_viewer_cloud.models.mail_storage_options import MailStorageOptions
 from groupdocs_viewer_cloud.models.object_exist import ObjectExist
 from groupdocs_viewer_cloud.models.outlook_options import OutlookOptions
 from groupdocs_viewer_cloud.models.outlook_view_info import OutlookViewInfo
@@ -60,9 +61,11 @@ from groupdocs_viewer_cloud.models.spreadsheet_options import SpreadsheetOptions
 from groupdocs_viewer_cloud.models.storage_exist import StorageExist
 from groupdocs_viewer_cloud.models.storage_file import StorageFile
 from groupdocs_viewer_cloud.models.text_element import TextElement
+from groupdocs_viewer_cloud.models.text_options import TextOptions
 from groupdocs_viewer_cloud.models.tile import Tile
 from groupdocs_viewer_cloud.models.view_options import ViewOptions
 from groupdocs_viewer_cloud.models.view_result import ViewResult
+from groupdocs_viewer_cloud.models.visio_rendering_options import VisioRenderingOptions
 from groupdocs_viewer_cloud.models.watermark import Watermark
 from groupdocs_viewer_cloud.models.word_processing_options import WordProcessingOptions
 from groupdocs_viewer_cloud.models.attachment_view import AttachmentView
@@ -75,4 +78,3 @@ from groupdocs_viewer_cloud.models.line import Line
 from groupdocs_viewer_cloud.models.page_view import PageView
 from groupdocs_viewer_cloud.models.pdf_options import PdfOptions
 from groupdocs_viewer_cloud.models.word import Word
-

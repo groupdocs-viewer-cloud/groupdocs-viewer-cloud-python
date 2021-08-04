@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="ArchiveOptions.py">
+# <copyright company="Aspose Pty Ltd" file="TextOptions.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-class ArchiveOptions(object):
+class TextOptions(object):
     """
-    Provides options for rendering archive files
+    Provides options for rendering text documents
     """
 
     """
@@ -43,104 +43,77 @@ class ArchiveOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'folder': 'str',
-        'file_name': 'str',
-        'items_per_page': 'int'
+        'max_chars_per_row': 'int',
+        'max_rows_per_page': 'int'
     }
 
     attribute_map = {
-        'folder': 'Folder',
-        'file_name': 'FileName',
-        'items_per_page': 'ItemsPerPage'
+        'max_chars_per_row': 'MaxCharsPerRow',
+        'max_rows_per_page': 'MaxRowsPerPage'
     }
 
-    def __init__(self, folder=None, file_name=None, items_per_page=None, **kwargs):  # noqa: E501
-        """Initializes new instance of ArchiveOptions"""  # noqa: E501
+    def __init__(self, max_chars_per_row=None, max_rows_per_page=None, **kwargs):  # noqa: E501
+        """Initializes new instance of TextOptions"""  # noqa: E501
 
-        self._folder = None
-        self._file_name = None
-        self._items_per_page = None
+        self._max_chars_per_row = None
+        self._max_rows_per_page = None
 
-        if folder is not None:
-            self.folder = folder
-        if file_name is not None:
-            self.file_name = file_name
-        if items_per_page is not None:
-            self.items_per_page = items_per_page
+        if max_chars_per_row is not None:
+            self.max_chars_per_row = max_chars_per_row
+        if max_rows_per_page is not None:
+            self.max_rows_per_page = max_rows_per_page
     
     @property
-    def folder(self):
+    def max_chars_per_row(self):
         """
-        Gets the folder.  # noqa: E501
+        Gets the max_chars_per_row.  # noqa: E501
 
-        The folder inside the archive to be rendered  # noqa: E501
+        Max chars per row on page. Default value is 85.  # noqa: E501
 
-        :return: The folder.  # noqa: E501
-        :rtype: str
-        """
-        return self._folder
-
-    @folder.setter
-    def folder(self, folder):
-        """
-        Sets the folder.
-
-        The folder inside the archive to be rendered  # noqa: E501
-
-        :param folder: The folder.  # noqa: E501
-        :type: str
-        """
-        self._folder = folder
-    
-    @property
-    def file_name(self):
-        """
-        Gets the file_name.  # noqa: E501
-
-        The filename to display in the header. By default the name of the source file is displayed.  # noqa: E501
-
-        :return: The file_name.  # noqa: E501
-        :rtype: str
-        """
-        return self._file_name
-
-    @file_name.setter
-    def file_name(self, file_name):
-        """
-        Sets the file_name.
-
-        The filename to display in the header. By default the name of the source file is displayed.  # noqa: E501
-
-        :param file_name: The file_name.  # noqa: E501
-        :type: str
-        """
-        self._file_name = file_name
-    
-    @property
-    def items_per_page(self):
-        """
-        Gets the items_per_page.  # noqa: E501
-
-        Number of records per page (for rendering to HTML only)               # noqa: E501
-
-        :return: The items_per_page.  # noqa: E501
+        :return: The max_chars_per_row.  # noqa: E501
         :rtype: int
         """
-        return self._items_per_page
+        return self._max_chars_per_row
 
-    @items_per_page.setter
-    def items_per_page(self, items_per_page):
+    @max_chars_per_row.setter
+    def max_chars_per_row(self, max_chars_per_row):
         """
-        Sets the items_per_page.
+        Sets the max_chars_per_row.
 
-        Number of records per page (for rendering to HTML only)               # noqa: E501
+        Max chars per row on page. Default value is 85.  # noqa: E501
 
-        :param items_per_page: The items_per_page.  # noqa: E501
+        :param max_chars_per_row: The max_chars_per_row.  # noqa: E501
         :type: int
         """
-        if items_per_page is None:
-            raise ValueError("Invalid value for `items_per_page`, must not be `None`")  # noqa: E501
-        self._items_per_page = items_per_page
+        if max_chars_per_row is None:
+            raise ValueError("Invalid value for `max_chars_per_row`, must not be `None`")  # noqa: E501
+        self._max_chars_per_row = max_chars_per_row
+    
+    @property
+    def max_rows_per_page(self):
+        """
+        Gets the max_rows_per_page.  # noqa: E501
+
+        Max rows per page. Default value is 55.  # noqa: E501
+
+        :return: The max_rows_per_page.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_rows_per_page
+
+    @max_rows_per_page.setter
+    def max_rows_per_page(self, max_rows_per_page):
+        """
+        Sets the max_rows_per_page.
+
+        Max rows per page. Default value is 55.  # noqa: E501
+
+        :param max_rows_per_page: The max_rows_per_page.  # noqa: E501
+        :type: int
+        """
+        if max_rows_per_page is None:
+            raise ValueError("Invalid value for `max_rows_per_page`, must not be `None`")  # noqa: E501
+        self._max_rows_per_page = max_rows_per_page
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -176,7 +149,7 @@ class ArchiveOptions(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ArchiveOptions):
+        if not isinstance(other, TextOptions):
             return False
 
         return self.__dict__ == other.__dict__

@@ -44,24 +44,34 @@ class EmailOptions(object):
     """
     swagger_types = {
         'page_size': 'str',
-        'field_labels': 'list[FieldLabel]'
+        'field_labels': 'list[FieldLabel]',
+        'date_time_format': 'str',
+        'time_zone_offset': 'str'
     }
 
     attribute_map = {
         'page_size': 'PageSize',
-        'field_labels': 'FieldLabels'
+        'field_labels': 'FieldLabels',
+        'date_time_format': 'DateTimeFormat',
+        'time_zone_offset': 'TimeZoneOffset'
     }
 
-    def __init__(self, page_size=None, field_labels=None, **kwargs):  # noqa: E501
+    def __init__(self, page_size=None, field_labels=None, date_time_format=None, time_zone_offset=None, **kwargs):  # noqa: E501
         """Initializes new instance of EmailOptions"""  # noqa: E501
 
         self._page_size = None
         self._field_labels = None
+        self._date_time_format = None
+        self._time_zone_offset = None
 
         if page_size is not None:
             self.page_size = page_size
         if field_labels is not None:
             self.field_labels = field_labels
+        if date_time_format is not None:
+            self.date_time_format = date_time_format
+        if time_zone_offset is not None:
+            self.time_zone_offset = time_zone_offset
     
     @property
     def page_size(self):
@@ -120,6 +130,54 @@ class EmailOptions(object):
         :type: list[FieldLabel]
         """
         self._field_labels = field_labels
+    
+    @property
+    def date_time_format(self):
+        """
+        Gets the date_time_format.  # noqa: E501
+
+        Time Format (can be include TimeZone) for example: 'MM d yyyy HH:mm tt', if not set - current system format is used  # noqa: E501
+
+        :return: The date_time_format.  # noqa: E501
+        :rtype: str
+        """
+        return self._date_time_format
+
+    @date_time_format.setter
+    def date_time_format(self, date_time_format):
+        """
+        Sets the date_time_format.
+
+        Time Format (can be include TimeZone) for example: 'MM d yyyy HH:mm tt', if not set - current system format is used  # noqa: E501
+
+        :param date_time_format: The date_time_format.  # noqa: E501
+        :type: str
+        """
+        self._date_time_format = date_time_format
+    
+    @property
+    def time_zone_offset(self):
+        """
+        Gets the time_zone_offset.  # noqa: E501
+
+        Message time zone offset. Format should be compatible with .net TimeSpan  # noqa: E501
+
+        :return: The time_zone_offset.  # noqa: E501
+        :rtype: str
+        """
+        return self._time_zone_offset
+
+    @time_zone_offset.setter
+    def time_zone_offset(self, time_zone_offset):
+        """
+        Sets the time_zone_offset.
+
+        Message time zone offset. Format should be compatible with .net TimeSpan  # noqa: E501
+
+        :param time_zone_offset: The time_zone_offset.  # noqa: E501
+        :type: str
+        """
+        self._time_zone_offset = time_zone_offset
 
     def to_dict(self):
         """Returns the model properties as a dict"""

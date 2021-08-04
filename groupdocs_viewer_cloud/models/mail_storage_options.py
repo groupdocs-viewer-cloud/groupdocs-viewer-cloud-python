@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="ArchiveOptions.py">
+# <copyright company="Aspose Pty Ltd" file="MailStorageOptions.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-class ArchiveOptions(object):
+class MailStorageOptions(object):
     """
-    Provides options for rendering archive files
+    Provides options for rendering Mail storage (Lotus Notes, MBox) data files.
     """
 
     """
@@ -43,104 +43,104 @@ class ArchiveOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'folder': 'str',
-        'file_name': 'str',
-        'items_per_page': 'int'
+        'text_filter': 'str',
+        'address_filter': 'str',
+        'max_items': 'int'
     }
 
     attribute_map = {
-        'folder': 'Folder',
-        'file_name': 'FileName',
-        'items_per_page': 'ItemsPerPage'
+        'text_filter': 'TextFilter',
+        'address_filter': 'AddressFilter',
+        'max_items': 'MaxItems'
     }
 
-    def __init__(self, folder=None, file_name=None, items_per_page=None, **kwargs):  # noqa: E501
-        """Initializes new instance of ArchiveOptions"""  # noqa: E501
+    def __init__(self, text_filter=None, address_filter=None, max_items=None, **kwargs):  # noqa: E501
+        """Initializes new instance of MailStorageOptions"""  # noqa: E501
 
-        self._folder = None
-        self._file_name = None
-        self._items_per_page = None
+        self._text_filter = None
+        self._address_filter = None
+        self._max_items = None
 
-        if folder is not None:
-            self.folder = folder
-        if file_name is not None:
-            self.file_name = file_name
-        if items_per_page is not None:
-            self.items_per_page = items_per_page
+        if text_filter is not None:
+            self.text_filter = text_filter
+        if address_filter is not None:
+            self.address_filter = address_filter
+        if max_items is not None:
+            self.max_items = max_items
     
     @property
-    def folder(self):
+    def text_filter(self):
         """
-        Gets the folder.  # noqa: E501
+        Gets the text_filter.  # noqa: E501
 
-        The folder inside the archive to be rendered  # noqa: E501
+        The keywords used to filter messages.  # noqa: E501
 
-        :return: The folder.  # noqa: E501
+        :return: The text_filter.  # noqa: E501
         :rtype: str
         """
-        return self._folder
+        return self._text_filter
 
-    @folder.setter
-    def folder(self, folder):
+    @text_filter.setter
+    def text_filter(self, text_filter):
         """
-        Sets the folder.
+        Sets the text_filter.
 
-        The folder inside the archive to be rendered  # noqa: E501
+        The keywords used to filter messages.  # noqa: E501
 
-        :param folder: The folder.  # noqa: E501
+        :param text_filter: The text_filter.  # noqa: E501
         :type: str
         """
-        self._folder = folder
+        self._text_filter = text_filter
     
     @property
-    def file_name(self):
+    def address_filter(self):
         """
-        Gets the file_name.  # noqa: E501
+        Gets the address_filter.  # noqa: E501
 
-        The filename to display in the header. By default the name of the source file is displayed.  # noqa: E501
+        The email-address used to filter messages by sender or recipient.  # noqa: E501
 
-        :return: The file_name.  # noqa: E501
+        :return: The address_filter.  # noqa: E501
         :rtype: str
         """
-        return self._file_name
+        return self._address_filter
 
-    @file_name.setter
-    def file_name(self, file_name):
+    @address_filter.setter
+    def address_filter(self, address_filter):
         """
-        Sets the file_name.
+        Sets the address_filter.
 
-        The filename to display in the header. By default the name of the source file is displayed.  # noqa: E501
+        The email-address used to filter messages by sender or recipient.  # noqa: E501
 
-        :param file_name: The file_name.  # noqa: E501
+        :param address_filter: The address_filter.  # noqa: E501
         :type: str
         """
-        self._file_name = file_name
+        self._address_filter = address_filter
     
     @property
-    def items_per_page(self):
+    def max_items(self):
         """
-        Gets the items_per_page.  # noqa: E501
+        Gets the max_items.  # noqa: E501
 
-        Number of records per page (for rendering to HTML only)               # noqa: E501
+        The maximum number of messages or items for render. Default value is 0 - all messages will be rendered  # noqa: E501
 
-        :return: The items_per_page.  # noqa: E501
+        :return: The max_items.  # noqa: E501
         :rtype: int
         """
-        return self._items_per_page
+        return self._max_items
 
-    @items_per_page.setter
-    def items_per_page(self, items_per_page):
+    @max_items.setter
+    def max_items(self, max_items):
         """
-        Sets the items_per_page.
+        Sets the max_items.
 
-        Number of records per page (for rendering to HTML only)               # noqa: E501
+        The maximum number of messages or items for render. Default value is 0 - all messages will be rendered  # noqa: E501
 
-        :param items_per_page: The items_per_page.  # noqa: E501
+        :param max_items: The max_items.  # noqa: E501
         :type: int
         """
-        if items_per_page is None:
-            raise ValueError("Invalid value for `items_per_page`, must not be `None`")  # noqa: E501
-        self._items_per_page = items_per_page
+        if max_items is None:
+            raise ValueError("Invalid value for `max_items`, must not be `None`")  # noqa: E501
+        self._max_items = max_items
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -176,7 +176,7 @@ class ArchiveOptions(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ArchiveOptions):
+        if not isinstance(other, MailStorageOptions):
             return False
 
         return self.__dict__ == other.__dict__

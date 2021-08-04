@@ -48,23 +48,29 @@ class ImageOptions(RenderOptions):
         'width': 'int',
         'height': 'int',
         'extract_text': 'bool',
-        'jpeg_quality': 'int'
+        'jpeg_quality': 'int',
+        'max_width': 'int',
+        'max_height': 'int'
     }
 
     attribute_map = {
         'width': 'Width',
         'height': 'Height',
         'extract_text': 'ExtractText',
-        'jpeg_quality': 'JpegQuality'
+        'jpeg_quality': 'JpegQuality',
+        'max_width': 'MaxWidth',
+        'max_height': 'MaxHeight'
     }
 
-    def __init__(self, width=None, height=None, extract_text=None, jpeg_quality=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, extract_text=None, jpeg_quality=None, max_width=None, max_height=None, **kwargs):  # noqa: E501
         """Initializes new instance of ImageOptions"""  # noqa: E501
 
         self._width = None
         self._height = None
         self._extract_text = None
         self._jpeg_quality = None
+        self._max_width = None
+        self._max_height = None
 
         if width is not None:
             self.width = width
@@ -74,6 +80,10 @@ class ImageOptions(RenderOptions):
             self.extract_text = extract_text
         if jpeg_quality is not None:
             self.jpeg_quality = jpeg_quality
+        if max_width is not None:
+            self.max_width = max_width
+        if max_height is not None:
+            self.max_height = max_height
 
         base = super(ImageOptions, self)
         base.__init__(**kwargs)
@@ -184,6 +194,58 @@ class ImageOptions(RenderOptions):
         if jpeg_quality is None:
             raise ValueError("Invalid value for `jpeg_quality`, must not be `None`")  # noqa: E501
         self._jpeg_quality = jpeg_quality
+    
+    @property
+    def max_width(self):
+        """
+        Gets the max_width.  # noqa: E501
+
+        Max width of an output image in pixels  # noqa: E501
+
+        :return: The max_width.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_width
+
+    @max_width.setter
+    def max_width(self, max_width):
+        """
+        Sets the max_width.
+
+        Max width of an output image in pixels  # noqa: E501
+
+        :param max_width: The max_width.  # noqa: E501
+        :type: int
+        """
+        if max_width is None:
+            raise ValueError("Invalid value for `max_width`, must not be `None`")  # noqa: E501
+        self._max_width = max_width
+    
+    @property
+    def max_height(self):
+        """
+        Gets the max_height.  # noqa: E501
+
+        Max height of an output image in pixels  # noqa: E501
+
+        :return: The max_height.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_height
+
+    @max_height.setter
+    def max_height(self, max_height):
+        """
+        Sets the max_height.
+
+        Max height of an output image in pixels  # noqa: E501
+
+        :param max_height: The max_height.  # noqa: E501
+        :type: int
+        """
+        if max_height is None:
+            raise ValueError("Invalid value for `max_height`, must not be `None`")  # noqa: E501
+        self._max_height = max_height
 
     def to_dict(self):
         """Returns the model properties as a dict"""

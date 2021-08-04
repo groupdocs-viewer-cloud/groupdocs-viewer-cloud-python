@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="ArchiveOptions.py">
+# <copyright company="Aspose Pty Ltd" file="VisioRenderingOptions.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-class ArchiveOptions(object):
+class VisioRenderingOptions(object):
     """
-    Provides options for rendering archive files
+    The Visio files processing documents view options.
     """
 
     """
@@ -43,104 +43,77 @@ class ArchiveOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'folder': 'str',
-        'file_name': 'str',
-        'items_per_page': 'int'
+        'render_figures_only': 'bool',
+        'figure_width': 'int'
     }
 
     attribute_map = {
-        'folder': 'Folder',
-        'file_name': 'FileName',
-        'items_per_page': 'ItemsPerPage'
+        'render_figures_only': 'RenderFiguresOnly',
+        'figure_width': 'FigureWidth'
     }
 
-    def __init__(self, folder=None, file_name=None, items_per_page=None, **kwargs):  # noqa: E501
-        """Initializes new instance of ArchiveOptions"""  # noqa: E501
+    def __init__(self, render_figures_only=None, figure_width=None, **kwargs):  # noqa: E501
+        """Initializes new instance of VisioRenderingOptions"""  # noqa: E501
 
-        self._folder = None
-        self._file_name = None
-        self._items_per_page = None
+        self._render_figures_only = None
+        self._figure_width = None
 
-        if folder is not None:
-            self.folder = folder
-        if file_name is not None:
-            self.file_name = file_name
-        if items_per_page is not None:
-            self.items_per_page = items_per_page
+        if render_figures_only is not None:
+            self.render_figures_only = render_figures_only
+        if figure_width is not None:
+            self.figure_width = figure_width
     
     @property
-    def folder(self):
+    def render_figures_only(self):
         """
-        Gets the folder.  # noqa: E501
+        Gets the render_figures_only.  # noqa: E501
 
-        The folder inside the archive to be rendered  # noqa: E501
+        Render only Visio figures, not a diagram.  # noqa: E501
 
-        :return: The folder.  # noqa: E501
-        :rtype: str
+        :return: The render_figures_only.  # noqa: E501
+        :rtype: bool
         """
-        return self._folder
+        return self._render_figures_only
 
-    @folder.setter
-    def folder(self, folder):
+    @render_figures_only.setter
+    def render_figures_only(self, render_figures_only):
         """
-        Sets the folder.
+        Sets the render_figures_only.
 
-        The folder inside the archive to be rendered  # noqa: E501
+        Render only Visio figures, not a diagram.  # noqa: E501
 
-        :param folder: The folder.  # noqa: E501
-        :type: str
+        :param render_figures_only: The render_figures_only.  # noqa: E501
+        :type: bool
         """
-        self._folder = folder
+        if render_figures_only is None:
+            raise ValueError("Invalid value for `render_figures_only`, must not be `None`")  # noqa: E501
+        self._render_figures_only = render_figures_only
     
     @property
-    def file_name(self):
+    def figure_width(self):
         """
-        Gets the file_name.  # noqa: E501
+        Gets the figure_width.  # noqa: E501
 
-        The filename to display in the header. By default the name of the source file is displayed.  # noqa: E501
+        Figure width, height will be calculated automatically. Default value is 100.  # noqa: E501
 
-        :return: The file_name.  # noqa: E501
-        :rtype: str
-        """
-        return self._file_name
-
-    @file_name.setter
-    def file_name(self, file_name):
-        """
-        Sets the file_name.
-
-        The filename to display in the header. By default the name of the source file is displayed.  # noqa: E501
-
-        :param file_name: The file_name.  # noqa: E501
-        :type: str
-        """
-        self._file_name = file_name
-    
-    @property
-    def items_per_page(self):
-        """
-        Gets the items_per_page.  # noqa: E501
-
-        Number of records per page (for rendering to HTML only)               # noqa: E501
-
-        :return: The items_per_page.  # noqa: E501
+        :return: The figure_width.  # noqa: E501
         :rtype: int
         """
-        return self._items_per_page
+        return self._figure_width
 
-    @items_per_page.setter
-    def items_per_page(self, items_per_page):
+    @figure_width.setter
+    def figure_width(self, figure_width):
         """
-        Sets the items_per_page.
+        Sets the figure_width.
 
-        Number of records per page (for rendering to HTML only)               # noqa: E501
+        Figure width, height will be calculated automatically. Default value is 100.  # noqa: E501
 
-        :param items_per_page: The items_per_page.  # noqa: E501
+        :param figure_width: The figure_width.  # noqa: E501
         :type: int
         """
-        if items_per_page is None:
-            raise ValueError("Invalid value for `items_per_page`, must not be `None`")  # noqa: E501
-        self._items_per_page = items_per_page
+        if figure_width is None:
+            raise ValueError("Invalid value for `figure_width`, must not be `None`")  # noqa: E501
+        self._figure_width = figure_width
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -176,7 +149,7 @@ class ArchiveOptions(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ArchiveOptions):
+        if not isinstance(other, VisioRenderingOptions):
             return False
 
         return self.__dict__ == other.__dict__

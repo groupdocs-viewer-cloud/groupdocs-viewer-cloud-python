@@ -50,7 +50,13 @@ class HtmlOptions(RenderOptions):
         'is_responsive': 'bool',
         'minify': 'bool',
         'exclude_fonts': 'bool',
-        'fonts_to_exclude': 'list[str]'
+        'fonts_to_exclude': 'list[str]',
+        'for_printing': 'bool',
+        'image_height': 'int',
+        'image_width': 'int',
+        'image_max_height': 'int',
+        'image_max_width': 'int',
+        'render_to_single_page': 'bool'
     }
 
     attribute_map = {
@@ -59,10 +65,16 @@ class HtmlOptions(RenderOptions):
         'is_responsive': 'IsResponsive',
         'minify': 'Minify',
         'exclude_fonts': 'ExcludeFonts',
-        'fonts_to_exclude': 'FontsToExclude'
+        'fonts_to_exclude': 'FontsToExclude',
+        'for_printing': 'ForPrinting',
+        'image_height': 'ImageHeight',
+        'image_width': 'ImageWidth',
+        'image_max_height': 'ImageMaxHeight',
+        'image_max_width': 'ImageMaxWidth',
+        'render_to_single_page': 'RenderToSinglePage'
     }
 
-    def __init__(self, external_resources=None, resource_path=None, is_responsive=None, minify=None, exclude_fonts=None, fonts_to_exclude=None, **kwargs):  # noqa: E501
+    def __init__(self, external_resources=None, resource_path=None, is_responsive=None, minify=None, exclude_fonts=None, fonts_to_exclude=None, for_printing=None, image_height=None, image_width=None, image_max_height=None, image_max_width=None, render_to_single_page=None, **kwargs):  # noqa: E501
         """Initializes new instance of HtmlOptions"""  # noqa: E501
 
         self._external_resources = None
@@ -71,6 +83,12 @@ class HtmlOptions(RenderOptions):
         self._minify = None
         self._exclude_fonts = None
         self._fonts_to_exclude = None
+        self._for_printing = None
+        self._image_height = None
+        self._image_width = None
+        self._image_max_height = None
+        self._image_max_width = None
+        self._render_to_single_page = None
 
         if external_resources is not None:
             self.external_resources = external_resources
@@ -84,6 +102,18 @@ class HtmlOptions(RenderOptions):
             self.exclude_fonts = exclude_fonts
         if fonts_to_exclude is not None:
             self.fonts_to_exclude = fonts_to_exclude
+        if for_printing is not None:
+            self.for_printing = for_printing
+        if image_height is not None:
+            self.image_height = image_height
+        if image_width is not None:
+            self.image_width = image_width
+        if image_max_height is not None:
+            self.image_max_height = image_max_height
+        if image_max_width is not None:
+            self.image_max_width = image_max_width
+        if render_to_single_page is not None:
+            self.render_to_single_page = render_to_single_page
 
         base = super(HtmlOptions, self)
         base.__init__(**kwargs)
@@ -242,6 +272,162 @@ class HtmlOptions(RenderOptions):
         :type: list[str]
         """
         self._fonts_to_exclude = fonts_to_exclude
+    
+    @property
+    def for_printing(self):
+        """
+        Gets the for_printing.  # noqa: E501
+
+        Indicates whether to optimize output HTML for printing.  # noqa: E501
+
+        :return: The for_printing.  # noqa: E501
+        :rtype: bool
+        """
+        return self._for_printing
+
+    @for_printing.setter
+    def for_printing(self, for_printing):
+        """
+        Sets the for_printing.
+
+        Indicates whether to optimize output HTML for printing.  # noqa: E501
+
+        :param for_printing: The for_printing.  # noqa: E501
+        :type: bool
+        """
+        if for_printing is None:
+            raise ValueError("Invalid value for `for_printing`, must not be `None`")  # noqa: E501
+        self._for_printing = for_printing
+    
+    @property
+    def image_height(self):
+        """
+        Gets the image_height.  # noqa: E501
+
+        The height of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+
+        :return: The image_height.  # noqa: E501
+        :rtype: int
+        """
+        return self._image_height
+
+    @image_height.setter
+    def image_height(self, image_height):
+        """
+        Sets the image_height.
+
+        The height of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+
+        :param image_height: The image_height.  # noqa: E501
+        :type: int
+        """
+        if image_height is None:
+            raise ValueError("Invalid value for `image_height`, must not be `None`")  # noqa: E501
+        self._image_height = image_height
+    
+    @property
+    def image_width(self):
+        """
+        Gets the image_width.  # noqa: E501
+
+        The width of the output image in pixels. (When converting single image to HTML only)  # noqa: E501
+
+        :return: The image_width.  # noqa: E501
+        :rtype: int
+        """
+        return self._image_width
+
+    @image_width.setter
+    def image_width(self, image_width):
+        """
+        Sets the image_width.
+
+        The width of the output image in pixels. (When converting single image to HTML only)  # noqa: E501
+
+        :param image_width: The image_width.  # noqa: E501
+        :type: int
+        """
+        if image_width is None:
+            raise ValueError("Invalid value for `image_width`, must not be `None`")  # noqa: E501
+        self._image_width = image_width
+    
+    @property
+    def image_max_height(self):
+        """
+        Gets the image_max_height.  # noqa: E501
+
+        Max height of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+
+        :return: The image_max_height.  # noqa: E501
+        :rtype: int
+        """
+        return self._image_max_height
+
+    @image_max_height.setter
+    def image_max_height(self, image_max_height):
+        """
+        Sets the image_max_height.
+
+        Max height of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+
+        :param image_max_height: The image_max_height.  # noqa: E501
+        :type: int
+        """
+        if image_max_height is None:
+            raise ValueError("Invalid value for `image_max_height`, must not be `None`")  # noqa: E501
+        self._image_max_height = image_max_height
+    
+    @property
+    def image_max_width(self):
+        """
+        Gets the image_max_width.  # noqa: E501
+
+        Max width of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+
+        :return: The image_max_width.  # noqa: E501
+        :rtype: int
+        """
+        return self._image_max_width
+
+    @image_max_width.setter
+    def image_max_width(self, image_max_width):
+        """
+        Sets the image_max_width.
+
+        Max width of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+
+        :param image_max_width: The image_max_width.  # noqa: E501
+        :type: int
+        """
+        if image_max_width is None:
+            raise ValueError("Invalid value for `image_max_width`, must not be `None`")  # noqa: E501
+        self._image_max_width = image_max_width
+    
+    @property
+    def render_to_single_page(self):
+        """
+        Gets the render_to_single_page.  # noqa: E501
+
+        Enables HTML content will be rendered to single page  # noqa: E501
+
+        :return: The render_to_single_page.  # noqa: E501
+        :rtype: bool
+        """
+        return self._render_to_single_page
+
+    @render_to_single_page.setter
+    def render_to_single_page(self, render_to_single_page):
+        """
+        Sets the render_to_single_page.
+
+        Enables HTML content will be rendered to single page  # noqa: E501
+
+        :param render_to_single_page: The render_to_single_page.  # noqa: E501
+        :type: bool
+        """
+        if render_to_single_page is None:
+            raise ValueError("Invalid value for `render_to_single_page`, must not be `None`")  # noqa: E501
+        self._render_to_single_page = render_to_single_page
 
     def to_dict(self):
         """Returns the model properties as a dict"""
