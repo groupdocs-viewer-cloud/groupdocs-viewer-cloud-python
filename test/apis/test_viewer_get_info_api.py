@@ -51,6 +51,15 @@ class TestViewerGetInfoApi(TestContext):
             self.info_api.get_info(request)
         self.assertEqual("Can't find file located at 'somefolder\\not-exist.docx'.", context.exception.message)
 
+    def test_get_info_password_protected(self):
+        view_options = ViewOptions()
+        view_options.file_info = TestFile.password_protected_docx().ToFileInfo()
+        view_options.file_info.password = None
+        request = GetInfoRequest(view_options)
+        with self.assertRaises(ApiException) as context:
+            self.info_api.get_info(request)
+        self.assertEqual("Please specify password to load the document.", context.exception.message)
+
     def test_get_info_with_minimal_view_options(self):
         view_options = ViewOptions()
         view_options.file_info = TestFile.password_protected_docx().ToFileInfo()
