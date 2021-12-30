@@ -9,6 +9,7 @@ from groupdocs_viewer_cloud.models.archive_view_info import ArchiveViewInfo
 from groupdocs_viewer_cloud.models.attachment_info import AttachmentInfo
 from groupdocs_viewer_cloud.models.cad_options import CadOptions
 from groupdocs_viewer_cloud.models.cad_view_info import CadViewInfo
+from groupdocs_viewer_cloud.models.consumption_result import ConsumptionResult
 from groupdocs_viewer_cloud.models.delete_view_options import DeleteViewOptions
 from groupdocs_viewer_cloud.models.disc_usage import DiscUsage
 from groupdocs_viewer_cloud.models.email_options import EmailOptions

@@ -7,8 +7,9 @@ from __future__ import absolute_import
 # import apis
 from groupdocs_viewer_cloud.apis.file_api import FileApi
 from groupdocs_viewer_cloud.apis.folder_api import FolderApi
-from groupdocs_viewer_cloud.apis.storage_api import StorageApi
 from groupdocs_viewer_cloud.apis.info_api import InfoApi
+from groupdocs_viewer_cloud.apis.license_api import LicenseApi
+from groupdocs_viewer_cloud.apis.storage_api import StorageApi
 from groupdocs_viewer_cloud.apis.view_api import ViewApi
 
 # import requests
@@ -30,6 +31,7 @@ from groupdocs_viewer_cloud.models.archive_view_info import ArchiveViewInfo
 from groupdocs_viewer_cloud.models.attachment_info import AttachmentInfo
 from groupdocs_viewer_cloud.models.cad_options import CadOptions
 from groupdocs_viewer_cloud.models.cad_view_info import CadViewInfo
+from groupdocs_viewer_cloud.models.consumption_result import ConsumptionResult
 from groupdocs_viewer_cloud.models.delete_view_options import DeleteViewOptions
 from groupdocs_viewer_cloud.models.disc_usage import DiscUsage
 from groupdocs_viewer_cloud.models.email_options import EmailOptions
