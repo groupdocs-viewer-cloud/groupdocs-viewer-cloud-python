@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="WordProcessingOptions.py">
+# <copyright company="Aspose Pty Ltd" file="WebDocumentOptions.py">
 #   Copyright (c) 2003-2023 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-class WordProcessingOptions(object):
+class WebDocumentOptions(object):
     """
-    Provides options for rendering word processing documents
+    This rendering options enables you to customize the appearance of the output HTML/PDF/PNG/JPEG when rendering Web documents.
     """
 
     """
@@ -43,7 +43,7 @@ class WordProcessingOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'render_tracked_changes': 'bool',
+        'page_size': 'str',
         'left_margin': 'float',
         'right_margin': 'float',
         'top_margin': 'float',
@@ -51,24 +51,24 @@ class WordProcessingOptions(object):
     }
 
     attribute_map = {
-        'render_tracked_changes': 'RenderTrackedChanges',
+        'page_size': 'PageSize',
         'left_margin': 'LeftMargin',
         'right_margin': 'RightMargin',
         'top_margin': 'TopMargin',
         'bottom_margin': 'BottomMargin'
     }
 
-    def __init__(self, render_tracked_changes=None, left_margin=None, right_margin=None, top_margin=None, bottom_margin=None, **kwargs):  # noqa: E501
-        """Initializes new instance of WordProcessingOptions"""  # noqa: E501
+    def __init__(self, page_size=None, left_margin=None, right_margin=None, top_margin=None, bottom_margin=None, **kwargs):  # noqa: E501
+        """Initializes new instance of WebDocumentOptions"""  # noqa: E501
 
-        self._render_tracked_changes = None
+        self._page_size = None
         self._left_margin = None
         self._right_margin = None
         self._top_margin = None
         self._bottom_margin = None
 
-        if render_tracked_changes is not None:
-            self.render_tracked_changes = render_tracked_changes
+        if page_size is not None:
+            self.page_size = page_size
         if left_margin is not None:
             self.left_margin = left_margin
         if right_margin is not None:
@@ -79,37 +79,45 @@ class WordProcessingOptions(object):
             self.bottom_margin = bottom_margin
     
     @property
-    def render_tracked_changes(self):
+    def page_size(self):
         """
-        Gets the render_tracked_changes.  # noqa: E501
+        Gets the page_size.  # noqa: E501
 
-        Enables tracked changes (revisions) rendering  # noqa: E501
+        The size of the output page. The default value is GroupDocs.Viewer.Options.PageSize.Letter 792 x 612 points. When contents does not fit set a larger page size e.g. GroupDocs.Viewer.Options.PageSize.A3.               # noqa: E501
 
-        :return: The render_tracked_changes.  # noqa: E501
-        :rtype: bool
+        :return: The page_size.  # noqa: E501
+        :rtype: str
         """
-        return self._render_tracked_changes
+        return self._page_size
 
-    @render_tracked_changes.setter
-    def render_tracked_changes(self, render_tracked_changes):
+    @page_size.setter
+    def page_size(self, page_size):
         """
-        Sets the render_tracked_changes.
+        Sets the page_size.
 
-        Enables tracked changes (revisions) rendering  # noqa: E501
+        The size of the output page. The default value is GroupDocs.Viewer.Options.PageSize.Letter 792 x 612 points. When contents does not fit set a larger page size e.g. GroupDocs.Viewer.Options.PageSize.A3.               # noqa: E501
 
-        :param render_tracked_changes: The render_tracked_changes.  # noqa: E501
-        :type: bool
+        :param page_size: The page_size.  # noqa: E501
+        :type: str
         """
-        if render_tracked_changes is None:
-            raise ValueError("Invalid value for `render_tracked_changes`, must not be `None`")  # noqa: E501
-        self._render_tracked_changes = render_tracked_changes
+        if page_size is None:
+            raise ValueError("Invalid value for `page_size`, must not be `None`")  # noqa: E501
+        allowed_values = ["Unspecified", "Letter", "Ledger", "A0", "A1", "A2", "A3", "A4"]  # noqa: E501
+        if not page_size.isdigit():	
+            if page_size not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `page_size` ({0}), must be one of {1}"  # noqa: E501
+                    .format(page_size, allowed_values))
+            self._page_size = page_size
+        else:
+            self._page_size = allowed_values[int(page_size) if six.PY3 else long(page_size)]
     
     @property
     def left_margin(self):
         """
         Gets the left_margin.  # noqa: E501
 
-        Left page margin (for HTML rendering only)  # noqa: E501
+        The distance (in points) between the left edge of the page and the left boundary  of the body text. The default value is 5 points.  # noqa: E501
 
         :return: The left_margin.  # noqa: E501
         :rtype: float
@@ -121,7 +129,7 @@ class WordProcessingOptions(object):
         """
         Sets the left_margin.
 
-        Left page margin (for HTML rendering only)  # noqa: E501
+        The distance (in points) between the left edge of the page and the left boundary  of the body text. The default value is 5 points.  # noqa: E501
 
         :param left_margin: The left_margin.  # noqa: E501
         :type: float
@@ -135,7 +143,7 @@ class WordProcessingOptions(object):
         """
         Gets the right_margin.  # noqa: E501
 
-        Right page margin (for HTML rendering only)  # noqa: E501
+        The distance (in points) between the right edge of the page and the right boundary of the body text. The default value is 5 points.  # noqa: E501
 
         :return: The right_margin.  # noqa: E501
         :rtype: float
@@ -147,7 +155,7 @@ class WordProcessingOptions(object):
         """
         Sets the right_margin.
 
-        Right page margin (for HTML rendering only)  # noqa: E501
+        The distance (in points) between the right edge of the page and the right boundary of the body text. The default value is 5 points.  # noqa: E501
 
         :param right_margin: The right_margin.  # noqa: E501
         :type: float
@@ -161,7 +169,7 @@ class WordProcessingOptions(object):
         """
         Gets the top_margin.  # noqa: E501
 
-        Top page margin (for HTML rendering only)  # noqa: E501
+        The distance (in points) between the top edge of the page and the top boundary of the body text. The default value is 72 points.  # noqa: E501
 
         :return: The top_margin.  # noqa: E501
         :rtype: float
@@ -173,7 +181,7 @@ class WordProcessingOptions(object):
         """
         Sets the top_margin.
 
-        Top page margin (for HTML rendering only)  # noqa: E501
+        The distance (in points) between the top edge of the page and the top boundary of the body text. The default value is 72 points.  # noqa: E501
 
         :param top_margin: The top_margin.  # noqa: E501
         :type: float
@@ -187,7 +195,7 @@ class WordProcessingOptions(object):
         """
         Gets the bottom_margin.  # noqa: E501
 
-        Bottom page margin (for HTML rendering only)  # noqa: E501
+        The distance (in points) between the bottom edge of the page and the bottom boundary of the body text. The default value is 72 points.  # noqa: E501
 
         :return: The bottom_margin.  # noqa: E501
         :rtype: float
@@ -199,7 +207,7 @@ class WordProcessingOptions(object):
         """
         Sets the bottom_margin.
 
-        Bottom page margin (for HTML rendering only)  # noqa: E501
+        The distance (in points) between the bottom edge of the page and the bottom boundary of the body text. The default value is 72 points.  # noqa: E501
 
         :param bottom_margin: The bottom_margin.  # noqa: E501
         :type: float
@@ -242,7 +250,7 @@ class WordProcessingOptions(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, WordProcessingOptions):
+        if not isinstance(other, WebDocumentOptions):
             return False
 
         return self.__dict__ == other.__dict__

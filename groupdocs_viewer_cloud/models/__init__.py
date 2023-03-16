@@ -47,6 +47,7 @@ from groupdocs_viewer_cloud.models.view_options import ViewOptions
 from groupdocs_viewer_cloud.models.view_result import ViewResult
 from groupdocs_viewer_cloud.models.visio_rendering_options import VisioRenderingOptions
 from groupdocs_viewer_cloud.models.watermark import Watermark
+from groupdocs_viewer_cloud.models.web_document_options import WebDocumentOptions
 from groupdocs_viewer_cloud.models.word_processing_options import WordProcessingOptions
 from groupdocs_viewer_cloud.models.attachment_view import AttachmentView
 from groupdocs_viewer_cloud.models.character import Character

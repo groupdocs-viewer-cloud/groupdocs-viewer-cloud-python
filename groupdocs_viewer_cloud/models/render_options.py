@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="RenderOptions.py">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2023 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -49,6 +49,7 @@ class RenderOptions(object):
         'page_rotations': 'list[PageRotation]',
         'default_font_name': 'str',
         'default_encoding': 'str',
+        'detect_encoding': 'bool',
         'render_comments': 'bool',
         'render_notes': 'bool',
         'render_hidden_pages': 'bool',
@@ -62,7 +63,8 @@ class RenderOptions(object):
         'archive_options': 'ArchiveOptions',
         'text_options': 'TextOptions',
         'mail_storage_options': 'MailStorageOptions',
-        'visio_rendering_options': 'VisioRenderingOptions'
+        'visio_rendering_options': 'VisioRenderingOptions',
+        'web_document_options': 'WebDocumentOptions'
     }
 
     attribute_map = {
@@ -72,6 +74,7 @@ class RenderOptions(object):
         'page_rotations': 'PageRotations',
         'default_font_name': 'DefaultFontName',
         'default_encoding': 'DefaultEncoding',
+        'detect_encoding': 'DetectEncoding',
         'render_comments': 'RenderComments',
         'render_notes': 'RenderNotes',
         'render_hidden_pages': 'RenderHiddenPages',
@@ -85,10 +88,11 @@ class RenderOptions(object):
         'archive_options': 'ArchiveOptions',
         'text_options': 'TextOptions',
         'mail_storage_options': 'MailStorageOptions',
-        'visio_rendering_options': 'VisioRenderingOptions'
+        'visio_rendering_options': 'VisioRenderingOptions',
+        'web_document_options': 'WebDocumentOptions'
     }
 
-    def __init__(self, start_page_number=None, count_pages_to_render=None, pages_to_render=None, page_rotations=None, default_font_name=None, default_encoding=None, render_comments=None, render_notes=None, render_hidden_pages=None, spreadsheet_options=None, cad_options=None, email_options=None, project_management_options=None, pdf_document_options=None, word_processing_options=None, outlook_options=None, archive_options=None, text_options=None, mail_storage_options=None, visio_rendering_options=None, **kwargs):  # noqa: E501
+    def __init__(self, start_page_number=None, count_pages_to_render=None, pages_to_render=None, page_rotations=None, default_font_name=None, default_encoding=None, detect_encoding=None, render_comments=None, render_notes=None, render_hidden_pages=None, spreadsheet_options=None, cad_options=None, email_options=None, project_management_options=None, pdf_document_options=None, word_processing_options=None, outlook_options=None, archive_options=None, text_options=None, mail_storage_options=None, visio_rendering_options=None, web_document_options=None, **kwargs):  # noqa: E501
         """Initializes new instance of RenderOptions"""  # noqa: E501
 
         self._start_page_number = None
@@ -97,6 +101,7 @@ class RenderOptions(object):
         self._page_rotations = None
         self._default_font_name = None
         self._default_encoding = None
+        self._detect_encoding = None
         self._render_comments = None
         self._render_notes = None
         self._render_hidden_pages = None
@@ -111,6 +116,7 @@ class RenderOptions(object):
         self._text_options = None
         self._mail_storage_options = None
         self._visio_rendering_options = None
+        self._web_document_options = None
 
         if start_page_number is not None:
             self.start_page_number = start_page_number
@@ -124,6 +130,8 @@ class RenderOptions(object):
             self.default_font_name = default_font_name
         if default_encoding is not None:
             self.default_encoding = default_encoding
+        if detect_encoding is not None:
+            self.detect_encoding = detect_encoding
         if render_comments is not None:
             self.render_comments = render_comments
         if render_notes is not None:
@@ -152,6 +160,8 @@ class RenderOptions(object):
             self.mail_storage_options = mail_storage_options
         if visio_rendering_options is not None:
             self.visio_rendering_options = visio_rendering_options
+        if web_document_options is not None:
+            self.web_document_options = web_document_options
     
     @property
     def start_page_number(self):
@@ -300,6 +310,30 @@ class RenderOptions(object):
         :type: str
         """
         self._default_encoding = default_encoding
+    
+    @property
+    def detect_encoding(self):
+        """
+        Gets the detect_encoding.  # noqa: E501
+
+        This option enables TXT, TSV, and CSV files encoding detection. In case the encoding can't be detected the DefaultEncoding is used.  # noqa: E501
+
+        :return: The detect_encoding.  # noqa: E501
+        :rtype: bool
+        """
+        return self._detect_encoding
+
+    @detect_encoding.setter
+    def detect_encoding(self, detect_encoding):
+        """
+        Sets the detect_encoding.
+
+        This option enables TXT, TSV, and CSV files encoding detection. In case the encoding can't be detected the DefaultEncoding is used.  # noqa: E501
+
+        :param detect_encoding: The detect_encoding.  # noqa: E501
+        :type: bool
+        """
+        self._detect_encoding = detect_encoding
     
     @property
     def render_comments(self):
@@ -642,6 +676,30 @@ class RenderOptions(object):
         :type: VisioRenderingOptions
         """
         self._visio_rendering_options = visio_rendering_options
+    
+    @property
+    def web_document_options(self):
+        """
+        Gets the web_document_options.  # noqa: E501
+
+        This rendering options enables you to customize the appearance of the output HTML/PDF/PNG/JPEG when rendering Web documents.  # noqa: E501
+
+        :return: The web_document_options.  # noqa: E501
+        :rtype: WebDocumentOptions
+        """
+        return self._web_document_options
+
+    @web_document_options.setter
+    def web_document_options(self, web_document_options):
+        """
+        Sets the web_document_options.
+
+        This rendering options enables you to customize the appearance of the output HTML/PDF/PNG/JPEG when rendering Web documents.  # noqa: E501
+
+        :param web_document_options: The web_document_options.  # noqa: E501
+        :type: WebDocumentOptions
+        """
+        self._web_document_options = web_document_options
 
     def to_dict(self):
         """Returns the model properties as a dict"""
