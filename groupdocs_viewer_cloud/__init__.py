@@ -54,6 +54,7 @@ from groupdocs_viewer_cloud.models.outlook_view_info import OutlookViewInfo
 from groupdocs_viewer_cloud.models.page_info import PageInfo
 from groupdocs_viewer_cloud.models.page_rotation import PageRotation
 from groupdocs_viewer_cloud.models.pdf_document_options import PdfDocumentOptions
+from groupdocs_viewer_cloud.models.pdf_optimization_options import PdfOptimizationOptions
 from groupdocs_viewer_cloud.models.pdf_view_info import PdfViewInfo
 from groupdocs_viewer_cloud.models.project_management_options import ProjectManagementOptions
 from groupdocs_viewer_cloud.models.project_management_view_info import ProjectManagementViewInfo

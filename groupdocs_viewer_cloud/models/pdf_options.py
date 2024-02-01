@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="PdfOptions.py">
-#   Copyright (c) 2003-2023 Aspose Pty Ltd
+#   Copyright (c) 2003-2024 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,10 +45,10 @@ class PdfOptions(RenderOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'jpg_quality': 'int',
         'document_open_password': 'str',
         'permissions_password': 'str',
         'permissions': 'list[str]',
+        'pdf_optimization_options': 'PdfOptimizationOptions',
         'image_max_width': 'int',
         'image_max_height': 'int',
         'image_width': 'int',
@@ -56,36 +56,36 @@ class PdfOptions(RenderOptions):
     }
 
     attribute_map = {
-        'jpg_quality': 'JpgQuality',
         'document_open_password': 'DocumentOpenPassword',
         'permissions_password': 'PermissionsPassword',
         'permissions': 'Permissions',
+        'pdf_optimization_options': 'PdfOptimizationOptions',
         'image_max_width': 'ImageMaxWidth',
         'image_max_height': 'ImageMaxHeight',
         'image_width': 'ImageWidth',
         'image_height': 'ImageHeight'
     }
 
-    def __init__(self, jpg_quality=None, document_open_password=None, permissions_password=None, permissions=None, image_max_width=None, image_max_height=None, image_width=None, image_height=None, **kwargs):  # noqa: E501
+    def __init__(self, document_open_password=None, permissions_password=None, permissions=None, pdf_optimization_options=None, image_max_width=None, image_max_height=None, image_width=None, image_height=None, **kwargs):  # noqa: E501
         """Initializes new instance of PdfOptions"""  # noqa: E501
 
-        self._jpg_quality = None
         self._document_open_password = None
         self._permissions_password = None
         self._permissions = None
+        self._pdf_optimization_options = None
         self._image_max_width = None
         self._image_max_height = None
         self._image_width = None
         self._image_height = None
 
-        if jpg_quality is not None:
-            self.jpg_quality = jpg_quality
         if document_open_password is not None:
             self.document_open_password = document_open_password
         if permissions_password is not None:
             self.permissions_password = permissions_password
         if permissions is not None:
             self.permissions = permissions
+        if pdf_optimization_options is not None:
+            self.pdf_optimization_options = pdf_optimization_options
         if image_max_width is not None:
             self.image_max_width = image_max_width
         if image_max_height is not None:
@@ -100,32 +100,6 @@ class PdfOptions(RenderOptions):
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
-    
-    @property
-    def jpg_quality(self):
-        """
-        Gets the jpg_quality.  # noqa: E501
-
-        The quality of the JPG images contained by output PDF document; Valid values are between 1 and 100; Default value is 90  # noqa: E501
-
-        :return: The jpg_quality.  # noqa: E501
-        :rtype: int
-        """
-        return self._jpg_quality
-
-    @jpg_quality.setter
-    def jpg_quality(self, jpg_quality):
-        """
-        Sets the jpg_quality.
-
-        The quality of the JPG images contained by output PDF document; Valid values are between 1 and 100; Default value is 90  # noqa: E501
-
-        :param jpg_quality: The jpg_quality.  # noqa: E501
-        :type: int
-        """
-        if jpg_quality is None:
-            raise ValueError("Invalid value for `jpg_quality`, must not be `None`")  # noqa: E501
-        self._jpg_quality = jpg_quality
     
     @property
     def document_open_password(self):
@@ -198,6 +172,30 @@ class PdfOptions(RenderOptions):
         :type: list[str]
         """
         self._permissions = permissions
+    
+    @property
+    def pdf_optimization_options(self):
+        """
+        Gets the pdf_optimization_options.  # noqa: E501
+
+        Contains options for rendering documents into PDF format.  # noqa: E501
+
+        :return: The pdf_optimization_options.  # noqa: E501
+        :rtype: PdfOptimizationOptions
+        """
+        return self._pdf_optimization_options
+
+    @pdf_optimization_options.setter
+    def pdf_optimization_options(self, pdf_optimization_options):
+        """
+        Sets the pdf_optimization_options.
+
+        Contains options for rendering documents into PDF format.  # noqa: E501
+
+        :param pdf_optimization_options: The pdf_optimization_options.  # noqa: E501
+        :type: PdfOptimizationOptions
+        """
+        self._pdf_optimization_options = pdf_optimization_options
     
     @property
     def image_max_width(self):
