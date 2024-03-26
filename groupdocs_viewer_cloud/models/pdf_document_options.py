@@ -48,7 +48,10 @@ class PdfDocumentOptions(object):
         'enable_font_hinting': 'bool',
         'render_original_page_size': 'bool',
         'image_quality': 'str',
-        'render_text_as_image': 'bool'
+        'render_text_as_image': 'bool',
+        'fixed_layout': 'bool',
+        'wrap_images_in_svg': 'bool',
+        'disable_font_license_verifications': 'bool'
     }
 
     attribute_map = {
@@ -57,10 +60,13 @@ class PdfDocumentOptions(object):
         'enable_font_hinting': 'EnableFontHinting',
         'render_original_page_size': 'RenderOriginalPageSize',
         'image_quality': 'ImageQuality',
-        'render_text_as_image': 'RenderTextAsImage'
+        'render_text_as_image': 'RenderTextAsImage',
+        'fixed_layout': 'FixedLayout',
+        'wrap_images_in_svg': 'WrapImagesInSvg',
+        'disable_font_license_verifications': 'DisableFontLicenseVerifications'
     }
 
-    def __init__(self, disable_chars_grouping=None, enable_layered_rendering=None, enable_font_hinting=None, render_original_page_size=None, image_quality=None, render_text_as_image=None, **kwargs):  # noqa: E501
+    def __init__(self, disable_chars_grouping=None, enable_layered_rendering=None, enable_font_hinting=None, render_original_page_size=None, image_quality=None, render_text_as_image=None, fixed_layout=None, wrap_images_in_svg=None, disable_font_license_verifications=None, **kwargs):  # noqa: E501
         """Initializes new instance of PdfDocumentOptions"""  # noqa: E501
 
         self._disable_chars_grouping = None
@@ -69,6 +75,9 @@ class PdfDocumentOptions(object):
         self._render_original_page_size = None
         self._image_quality = None
         self._render_text_as_image = None
+        self._fixed_layout = None
+        self._wrap_images_in_svg = None
+        self._disable_font_license_verifications = None
 
         if disable_chars_grouping is not None:
             self.disable_chars_grouping = disable_chars_grouping
@@ -82,6 +91,12 @@ class PdfDocumentOptions(object):
             self.image_quality = image_quality
         if render_text_as_image is not None:
             self.render_text_as_image = render_text_as_image
+        if fixed_layout is not None:
+            self.fixed_layout = fixed_layout
+        if wrap_images_in_svg is not None:
+            self.wrap_images_in_svg = wrap_images_in_svg
+        if disable_font_license_verifications is not None:
+            self.disable_font_license_verifications = disable_font_license_verifications
     
     @property
     def disable_chars_grouping(self):
@@ -246,6 +261,84 @@ class PdfDocumentOptions(object):
         if render_text_as_image is None:
             raise ValueError("Invalid value for `render_text_as_image`, must not be `None`")  # noqa: E501
         self._render_text_as_image = render_text_as_image
+    
+    @property
+    def fixed_layout(self):
+        """
+        Gets the fixed_layout.  # noqa: E501
+
+        Enables rendering the PDF and EPUB documents to HTML with a fixed layout.  # noqa: E501
+
+        :return: The fixed_layout.  # noqa: E501
+        :rtype: bool
+        """
+        return self._fixed_layout
+
+    @fixed_layout.setter
+    def fixed_layout(self, fixed_layout):
+        """
+        Sets the fixed_layout.
+
+        Enables rendering the PDF and EPUB documents to HTML with a fixed layout.  # noqa: E501
+
+        :param fixed_layout: The fixed_layout.  # noqa: E501
+        :type: bool
+        """
+        if fixed_layout is None:
+            raise ValueError("Invalid value for `fixed_layout`, must not be `None`")  # noqa: E501
+        self._fixed_layout = fixed_layout
+    
+    @property
+    def wrap_images_in_svg(self):
+        """
+        Gets the wrap_images_in_svg.  # noqa: E501
+
+        Enables wrapping each image in the output HTML document in SVG tag to improve the output quality.  # noqa: E501
+
+        :return: The wrap_images_in_svg.  # noqa: E501
+        :rtype: bool
+        """
+        return self._wrap_images_in_svg
+
+    @wrap_images_in_svg.setter
+    def wrap_images_in_svg(self, wrap_images_in_svg):
+        """
+        Sets the wrap_images_in_svg.
+
+        Enables wrapping each image in the output HTML document in SVG tag to improve the output quality.  # noqa: E501
+
+        :param wrap_images_in_svg: The wrap_images_in_svg.  # noqa: E501
+        :type: bool
+        """
+        if wrap_images_in_svg is None:
+            raise ValueError("Invalid value for `wrap_images_in_svg`, must not be `None`")  # noqa: E501
+        self._wrap_images_in_svg = wrap_images_in_svg
+    
+    @property
+    def disable_font_license_verifications(self):
+        """
+        Gets the disable_font_license_verifications.  # noqa: E501
+
+        Disables any license restrictions for all fonts in the current XPS/OXPS document.  # noqa: E501
+
+        :return: The disable_font_license_verifications.  # noqa: E501
+        :rtype: bool
+        """
+        return self._disable_font_license_verifications
+
+    @disable_font_license_verifications.setter
+    def disable_font_license_verifications(self, disable_font_license_verifications):
+        """
+        Sets the disable_font_license_verifications.
+
+        Disables any license restrictions for all fonts in the current XPS/OXPS document.  # noqa: E501
+
+        :param disable_font_license_verifications: The disable_font_license_verifications.  # noqa: E501
+        :type: bool
+        """
+        if disable_font_license_verifications is None:
+            raise ValueError("Invalid value for `disable_font_license_verifications`, must not be `None`")  # noqa: E501
+        self._disable_font_license_verifications = disable_font_license_verifications
 
     def to_dict(self):
         """Returns the model properties as a dict"""

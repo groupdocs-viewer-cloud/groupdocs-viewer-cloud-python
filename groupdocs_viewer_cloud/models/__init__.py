@@ -4,6 +4,8 @@
 from __future__ import absolute_import
 
 # import models
+from groupdocs_viewer_cloud.models.api_error import ApiError
+from groupdocs_viewer_cloud.models.api_error_response import ApiErrorResponse
 from groupdocs_viewer_cloud.models.archive_options import ArchiveOptions
 from groupdocs_viewer_cloud.models.archive_view_info import ArchiveViewInfo
 from groupdocs_viewer_cloud.models.attachment_info import AttachmentInfo

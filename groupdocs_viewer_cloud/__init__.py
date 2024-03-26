@@ -17,7 +17,7 @@ from groupdocs_viewer_cloud.apis.file_api import CopyFileRequest, DeleteFileRequ
 from groupdocs_viewer_cloud.apis.storage_api import GetDiscUsageRequest, GetFileVersionsRequest, ObjectExistsRequest, StorageExistsRequest
 from groupdocs_viewer_cloud.apis.folder_api import CopyFolderRequest, CreateFolderRequest, DeleteFolderRequest, GetFilesListRequest, MoveFolderRequest
 from groupdocs_viewer_cloud.apis.info_api import GetInfoRequest
-from groupdocs_viewer_cloud.apis.view_api import CreateViewRequest, DeleteViewRequest
+from groupdocs_viewer_cloud.apis.view_api import ConvertAndDownloadRequest, CreateViewRequest, DeleteViewRequest 
 
 # import related types
 from groupdocs_viewer_cloud.auth import Auth
@@ -26,6 +26,8 @@ from groupdocs_viewer_cloud.api_client import ApiClient
 from groupdocs_viewer_cloud.configuration import Configuration
 
 # import models
+from groupdocs_viewer_cloud.models.api_error import ApiError
+from groupdocs_viewer_cloud.models.api_error_response import ApiErrorResponse
 from groupdocs_viewer_cloud.models.archive_options import ArchiveOptions
 from groupdocs_viewer_cloud.models.archive_view_info import ArchiveViewInfo
 from groupdocs_viewer_cloud.models.attachment_info import AttachmentInfo

@@ -202,7 +202,7 @@ class PdfOptions(RenderOptions):
         """
         Gets the image_max_width.  # noqa: E501
 
-        Max width of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+        Max width of an output image in pixels. (When converting single image to PDF only)  # noqa: E501
 
         :return: The image_max_width.  # noqa: E501
         :rtype: int
@@ -214,7 +214,7 @@ class PdfOptions(RenderOptions):
         """
         Sets the image_max_width.
 
-        Max width of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+        Max width of an output image in pixels. (When converting single image to PDF only)  # noqa: E501
 
         :param image_max_width: The image_max_width.  # noqa: E501
         :type: int
@@ -228,7 +228,7 @@ class PdfOptions(RenderOptions):
         """
         Gets the image_max_height.  # noqa: E501
 
-        Max height of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+        Max height of an output image in pixels. (When converting single image to PDF only)  # noqa: E501
 
         :return: The image_max_height.  # noqa: E501
         :rtype: int
@@ -240,7 +240,7 @@ class PdfOptions(RenderOptions):
         """
         Sets the image_max_height.
 
-        Max height of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+        Max height of an output image in pixels. (When converting single image to PDF only)  # noqa: E501
 
         :param image_max_height: The image_max_height.  # noqa: E501
         :type: int
@@ -254,7 +254,7 @@ class PdfOptions(RenderOptions):
         """
         Gets the image_width.  # noqa: E501
 
-        The width of the output image in pixels. (When converting single image to HTML only)  # noqa: E501
+        The width of the output image in pixels. (When converting single image to PDF only)  # noqa: E501
 
         :return: The image_width.  # noqa: E501
         :rtype: int
@@ -266,7 +266,7 @@ class PdfOptions(RenderOptions):
         """
         Sets the image_width.
 
-        The width of the output image in pixels. (When converting single image to HTML only)  # noqa: E501
+        The width of the output image in pixels. (When converting single image to PDF only)  # noqa: E501
 
         :param image_width: The image_width.  # noqa: E501
         :type: int
@@ -280,7 +280,7 @@ class PdfOptions(RenderOptions):
         """
         Gets the image_height.  # noqa: E501
 
-        The height of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+        The height of an output image in pixels. (When converting single image to PDF only)  # noqa: E501
 
         :return: The image_height.  # noqa: E501
         :rtype: int
@@ -292,7 +292,7 @@ class PdfOptions(RenderOptions):
         """
         Sets the image_height.
 
-        The height of an output image in pixels. (When converting single image to HTML only)  # noqa: E501
+        The height of an output image in pixels. (When converting single image to PDF only)  # noqa: E501
 
         :param image_height: The image_height.  # noqa: E501
         :type: int
