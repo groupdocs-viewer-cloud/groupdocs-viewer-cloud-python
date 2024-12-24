@@ -44,29 +44,24 @@ class ArchiveOptions(object):
     """
     swagger_types = {
         'folder': 'str',
-        'file_name': 'str',
-        'items_per_page': 'int'
+        'file_name': 'str'
     }
 
     attribute_map = {
         'folder': 'Folder',
-        'file_name': 'FileName',
-        'items_per_page': 'ItemsPerPage'
+        'file_name': 'FileName'
     }
 
-    def __init__(self, folder=None, file_name=None, items_per_page=None, **kwargs):  # noqa: E501
+    def __init__(self, folder=None, file_name=None, **kwargs):  # noqa: E501
         """Initializes new instance of ArchiveOptions"""  # noqa: E501
 
         self._folder = None
         self._file_name = None
-        self._items_per_page = None
 
         if folder is not None:
             self.folder = folder
         if file_name is not None:
             self.file_name = file_name
-        if items_per_page is not None:
-            self.items_per_page = items_per_page
     
     @property
     def folder(self):
@@ -115,32 +110,6 @@ class ArchiveOptions(object):
         :type: str
         """
         self._file_name = file_name
-    
-    @property
-    def items_per_page(self):
-        """
-        Gets the items_per_page.  # noqa: E501
-
-        Number of records per page (for rendering to HTML only)               # noqa: E501
-
-        :return: The items_per_page.  # noqa: E501
-        :rtype: int
-        """
-        return self._items_per_page
-
-    @items_per_page.setter
-    def items_per_page(self, items_per_page):
-        """
-        Sets the items_per_page.
-
-        Number of records per page (for rendering to HTML only)               # noqa: E501
-
-        :param items_per_page: The items_per_page.  # noqa: E501
-        :type: int
-        """
-        if items_per_page is None:
-            raise ValueError("Invalid value for `items_per_page`, must not be `None`")  # noqa: E501
-        self._items_per_page = items_per_page
 
     def to_dict(self):
         """Returns the model properties as a dict"""
