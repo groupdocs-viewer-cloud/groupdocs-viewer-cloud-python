@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="HtmlOptions.py">
-#   Copyright (c) 2003-2024 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -56,7 +56,8 @@ class HtmlOptions(RenderOptions):
         'image_width': 'int',
         'image_max_height': 'int',
         'image_max_width': 'int',
-        'render_to_single_page': 'bool'
+        'render_to_single_page': 'bool',
+        'remove_java_script': 'bool'
     }
 
     attribute_map = {
@@ -71,10 +72,11 @@ class HtmlOptions(RenderOptions):
         'image_width': 'ImageWidth',
         'image_max_height': 'ImageMaxHeight',
         'image_max_width': 'ImageMaxWidth',
-        'render_to_single_page': 'RenderToSinglePage'
+        'render_to_single_page': 'RenderToSinglePage',
+        'remove_java_script': 'RemoveJavaScript'
     }
 
-    def __init__(self, external_resources=None, resource_path=None, is_responsive=None, minify=None, exclude_fonts=None, fonts_to_exclude=None, for_printing=None, image_height=None, image_width=None, image_max_height=None, image_max_width=None, render_to_single_page=None, **kwargs):  # noqa: E501
+    def __init__(self, external_resources=None, resource_path=None, is_responsive=None, minify=None, exclude_fonts=None, fonts_to_exclude=None, for_printing=None, image_height=None, image_width=None, image_max_height=None, image_max_width=None, render_to_single_page=None, remove_java_script=None, **kwargs):  # noqa: E501
         """Initializes new instance of HtmlOptions"""  # noqa: E501
 
         self._external_resources = None
@@ -89,6 +91,7 @@ class HtmlOptions(RenderOptions):
         self._image_max_height = None
         self._image_max_width = None
         self._render_to_single_page = None
+        self._remove_java_script = None
 
         if external_resources is not None:
             self.external_resources = external_resources
@@ -114,6 +117,8 @@ class HtmlOptions(RenderOptions):
             self.image_max_width = image_max_width
         if render_to_single_page is not None:
             self.render_to_single_page = render_to_single_page
+        if remove_java_script is not None:
+            self.remove_java_script = remove_java_script
 
         base = super(HtmlOptions, self)
         base.__init__(**kwargs)
@@ -428,6 +433,32 @@ class HtmlOptions(RenderOptions):
         if render_to_single_page is None:
             raise ValueError("Invalid value for `render_to_single_page`, must not be `None`")  # noqa: E501
         self._render_to_single_page = render_to_single_page
+    
+    @property
+    def remove_java_script(self):
+        """
+        Gets the remove_java_script.  # noqa: E501
+
+        Allows to remove the JavaScript source code from the links in resultant HTML documents, when rendering input documents, which have the scripts. By default is enabled (true).               # noqa: E501
+
+        :return: The remove_java_script.  # noqa: E501
+        :rtype: bool
+        """
+        return self._remove_java_script
+
+    @remove_java_script.setter
+    def remove_java_script(self, remove_java_script):
+        """
+        Sets the remove_java_script.
+
+        Allows to remove the JavaScript source code from the links in resultant HTML documents, when rendering input documents, which have the scripts. By default is enabled (true).               # noqa: E501
+
+        :param remove_java_script: The remove_java_script.  # noqa: E501
+        :type: bool
+        """
+        if remove_java_script is None:
+            raise ValueError("Invalid value for `remove_java_script`, must not be `None`")  # noqa: E501
+        self._remove_java_script = remove_java_script
 
     def to_dict(self):
         """Returns the model properties as a dict"""

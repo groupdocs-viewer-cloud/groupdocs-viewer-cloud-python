@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="viewer_api.py">
-#   Copyright (c) 2003-2024 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -387,7 +387,7 @@ class ViewApi(object):
 
 # --------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="convert_and_download_request.py">
-#   Copyright (c) 2003-2024 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -429,7 +429,7 @@ class ConvertAndDownloadRequest(object):
 
 # --------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="create_view_request.py">
-#   Copyright (c) 2003-2024 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -465,7 +465,7 @@ class CreateViewRequest(object):
 
 # --------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="delete_view_request.py">
-#   Copyright (c) 2003-2024 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
