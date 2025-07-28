@@ -1,9 +1,9 @@
 # GroupDocs.Viewer Cloud Python SDK
-Python package for communicating with the GroupDocs.Viewer Cloud API
+Python package for communicating with the GroupDocs.Viewer Cloud API. This SDK allows you to work with GroupDocs.Viewer Cloud REST APIs in your python applications, which allows rendering a specific document in HTML, image or PDF format with the flexibility to render the whole document or custom range of pages.
 
 ## Requirements
 
-Python 2.7 or 3.4+
+Python 3.4+
 
 ## Installation
 Install `groupdocs-viewer-cloud` with [PIP](https://pypi.org/project/pip/) from [PyPI](https://pypi.org/) by:
@@ -27,22 +27,53 @@ Please follow the [installation procedure](#installation) and then run following
 import groupdocs_viewer_cloud
 
 # Get your app_sid and app_key at https://dashboard.groupdocs.cloud (free registration is required).
-app_sid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-app_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+client_id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+client_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
-# Create instance of the API
-api = groupdocs_viewer_cloud.InfoApi.from_keys(app_sid, app_key)
+apiInstance = groupdocs_viewer_cloud.ViewApi.from_keys(client_id, client_secret)
 
-try:
-    # Retrieve supported file-formats
-    response = api.get_supported_file_formats()
+format = "jpg"      
+file = File.open("myfile.txt", "r")
 
-    # Print out supported file-formats
-    print("Supported file-formats:")
-    for format in response.formats:
-        print('{0} ({1})'.format(format.file_format, format.extension)) 
-except groupdocs_viewer_cloud.ApiException as e:
-    print("Exception when calling get_supported_file_formats: {0}".format(e.message))
+request = ConvertAndDownloadRequest.new format, file
+
+response = apiInstance.convert_and_download(request)
+```
+
+Below is an example demonstrating how to upload the document, render it, and download the result using GroupDocs.Viewer Cloud SDK for Python.
+
+
+```python
+# Import module
+import groupdocs_viewer_cloud
+
+# Get your app_sid and app_key at https://dashboard.groupdocs.cloud (free registration is required).
+client_id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+client_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+# Upload input file to cloud storage
+fileApiInstance = groupdocs_viewer_cloud.FileApi.from_keys(client_id, client_secret)
+request = groupdocs_viewer_cloud.UploadFileRequest("myfile.txt", "C:\\Data\\myfile.txt")
+fileApiInstance.upload_file(request)
+
+# Render to html format
+apiInstance = groupdocs_viewer_cloud.ViewApi.from_keys(client_id, client_secret)
+view_options = groupdocs_viewer_cloud.ViewOptions()
+view_options.file_info = groupdocs_viewer_cloud.FileInfo()
+view_options.file_info.file_path = "myfile.txt"
+view_options.view_format = "HTML"
+view_options.output_path = "myfile.html"
+
+request = groupdocs_viewer_cloud.CreateViewRequest(view_options)
+response = apiInstance.create_view(request)
+
+# Download result
+request = groupdocs_viewer_cloud.DownloadFileRequest("myfile.html")
+response = fileApiInstance.download_file(request)
+
+print("Expected response type is Stream: " + str(len(response)))
+
+
 ```
 
 ## Licensing
